@@ -18,27 +18,16 @@ namespace Model
         {
 
         }
-        public Customer(string name, string pnr, string email, string phone, string address)
+        /*public Customer(string name, string pnr, string email, string phone, string address)
         {
             this.name = name;
             this.pnr = pnr;
             this.email = email;
             this.phone = phone;
             this.address = address;
-        }
-
-        public string Name
-        {
-            get
-            {
-                return name;
-            }
-
-            set
-            {
-                name = value;
-            }
-        }
+        }*/
+        public string Name { get; set; }
+        
 
         public string Pnr
         {

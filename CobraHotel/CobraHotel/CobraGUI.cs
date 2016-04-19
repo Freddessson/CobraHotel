@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CobraHotel
 {
-    public partial class Form1 : Form
+    public partial class CobraGUI : Form
     {
-        public Form1()
+        public CobraGUI()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
 ﻿namespace CobraHotel
 {
-    partial class Form1
+    partial class CobraGUI
     {
         /// <summary>
         /// Required designer variable.

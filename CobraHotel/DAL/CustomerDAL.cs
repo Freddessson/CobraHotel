@@ -12,14 +12,15 @@ namespace DAL
     public class CustomerDAL
     {
 
-        public static void CreateCustomer()
+        public void CreateCustomer(string name, string pnr, string email, string phone, string address)
         {
             DBUtil conn = new DBUtil();
             SqlConnection myConnection = conn.connection();
             try
             {
                 SqlCommand myCommand = new SqlCommand("INSERT INTO dbo.customer (pnr, name, email, phone, address) " +
-                                    "Values (941223331222, 'Otto', 'fredriksson.otto@gmail.com', 0732206670, 'NotarieG')", myConnection);
+                                "VALUES ('" + name + "','" + pnr + "','" + email + "','" + phone + ",'" + address + "'');", myConnection;
+                //"Values (941223331222, 'Otto', 'fredriksson.otto@gmail.com', 0732206670, 'NotarieG')", myConnection);
                 myCommand.ExecuteNonQuery();
                 Console.WriteLine("Efter SQL");
             }
