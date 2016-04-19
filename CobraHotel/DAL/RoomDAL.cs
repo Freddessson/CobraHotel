@@ -11,8 +11,4 @@ namespace DAL
     }
 }
 
-hejhej
-    kefgj
-    sghsgij
-
-    jhjh
+jgjh
