@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using System.Data.SqlClient;
+using DAL;
 
 namespace CobraHotel
 {
@@ -13,12 +13,11 @@ namespace CobraHotel
         static void Main(string[] args)
         {
 
-            //HELLOOO GROUP
-            Console.WriteLine("innan vi skapar initierar DBCOnn");
+            
+       
             DBUtil d = new DBUtil();
-
-            Console.WriteLine("Innan SQL");
             SqlConnection myConnection = d.connection();
+
             if (myConnection != null)
             {
                 SqlCommand myCommand = new SqlCommand("INSERT INTO dbo.customer (pnr, name, email, phone, address) " +
@@ -35,4 +34,3 @@ namespace CobraHotel
 
     }
 }
-
