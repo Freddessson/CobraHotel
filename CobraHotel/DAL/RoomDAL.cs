@@ -10,3 +10,4 @@ namespace DAL
     {//HALLÅÅÅÅÅÅÅÅ
     }
 }
+//hejehej
