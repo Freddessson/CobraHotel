@@ -1,5 +1,5 @@
-﻿using DAL;
-using Model;
+﻿using CobraHotel.Model;
+using CobraHotel.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,14 +22,13 @@ namespace CobraHotel.Controller
         string InpAddress = "gatan 27";
 
         //Customer c1 = new Customer(InpName, InpPnr, InpEmail, InpPhone, InpAddress);
-        Customer c1 = new Customer("name {0}");
-        
+        //CreateCustomer
+        //Customer c1 = new Customer("name {0}");
+        //Customer c2 = new Customer("namnfan", "pnr", "", "", "");
+    }
 
-        
-
-
-
+    public void CobraHotel.DAL.CreateCustomer(string SocialSN, string Name, string Surname, string Email, string TelNr, string Gender, string ECName, string ECNumber)
+    {
+        CreateEmployee(SocialSN, Name, Surname, Email, TelNr, Gender, ECName, ECNumber);
 
     }
-    
-}

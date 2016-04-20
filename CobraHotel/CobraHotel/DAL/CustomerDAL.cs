@@ -5,14 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL;
 using System.Data.SqlClient;
-using Model;
+
 
 namespace CobraHotel.DAL
 {
     public class CustomerDAL
     {
 
-        public static void CreateCustomer(string name, string pnr, string email, string phone, string address)
+        public void CreateCustomer(string name, string pnr, string email, string phone, string address)
         {
             DBUtil conn = new DBUtil();
             SqlConnection myConnection = conn.connection();
