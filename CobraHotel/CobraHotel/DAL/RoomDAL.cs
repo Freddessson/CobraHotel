@@ -8,5 +8,6 @@ namespace CobraHotel.DAL
 {
     class RoomDAL
     {//HALLÅÅÅÅÅÅÅÅ
+        //Martins dator, Martins branch.
     }
 }
