@@ -6,22 +6,41 @@ using System.Threading.Tasks;
 using DAL;
 using System.Data.SqlClient;
 using Model;
+using System.Data;
 
 namespace DAL
 {
     public class CustomerDAL
     {
 
-        public static void CreateCustomer(string name, string pnr, string email, string phone, string address)
+        public static void CreateCustomer(Customer c)
         {
             DBUtil conn = new DBUtil();
             SqlConnection myConnection = conn.connection();
+            string name = c.name;
+            string pnr = c.pnr;
+            string email = c.email;
+            string phone = c.phone;
+            string address = c.address;
             try
             {
-                SqlCommand myCommand = new SqlCommand("INSERT INTO dbo.customer (pnr, name, email, phone, address) " +
-                                "VALUES ('" + name + "','" + pnr + "','" + email + "','" + phone + ",'" + address + "'');", myConnection;
-                //"Values (941223331222, 'Otto', 'fredriksson.otto@gmail.com', 0732206670, 'NotarieG')", myConnection);
-                myCommand.ExecuteNonQuery();
+                /*SqlCommand myCommand = new SqlCommand("INSERT INTO dbo.customer (pnr, name, email, phone, address) " +
+                                "VALUES (@pnr, @name, @email, @phone, @address);", myConnection);
+                //"Values (94, 'Otto', 'fredriksson.otto@gmail.com', 0732206670, 'NotarieG')", myConnection);*/
+                string query = "INSERT INTO dbo.customer (pnr, name, email, phone, address) " +
+                    "VALUES (@pnr, @name, @email, @phone, @address);";
+                Console.WriteLine("crash 1");
+                SqlCommand command = new SqlCommand(query, myConnection);
+                Console.WriteLine("crash 2");
+                command.Parameters.Add("@pnr", SqlDbType.NChar).Value = "abc";
+                command.Parameters.Add("@name", SqlDbType.NChar).Value = "abc";
+                command.Parameters.Add("@email", SqlDbType.NChar).Value = "abc";
+                command.Parameters.Add("@phone", SqlDbType.NChar).Value = "abc";
+                command.Parameters.Add("@address", SqlDbType.NChar).Value = "abc";
+                Console.WriteLine("crash 3");
+                myConnection.BeginTransaction();
+                Console.WriteLine("crash 4");
+                //myCommand.ExecuteNonQuery();
                 Console.WriteLine("Efter SQL");
             }
             catch (SqlException)
@@ -31,9 +50,10 @@ namespace DAL
             }
             conn.closeConn(myConnection);
         }
+
         
 
-        public Customer ShowCustomer(string pnr)
+        /*public Customer ShowCustomer(string pnr)
         {
             DBUtil conn = new DBUtil();
             SqlConnection myConnection = conn.connection();
@@ -59,6 +79,6 @@ namespace DAL
                 Console.WriteLine(e.ToString());
             }
             return null;
-        }
+        }*/
     }
 }

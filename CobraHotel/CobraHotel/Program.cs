@@ -5,16 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using DAL;
+using Model;
 
-namespace CobraHotel
+namespace View
 {
     class Program
     {
         static void Main(string[] args)
         {
+            Customer c = new Customer("name", "pnr", "email", "phone", "address");
+            DAL.CustomerDAL.CreateCustomer(c);
 
-            
-       
+            /*
             DBUtil d = new DBUtil();
             SqlConnection myConnection = d.connection();
 
@@ -30,7 +32,8 @@ namespace CobraHotel
                 Console.WriteLine("null");
             }
             d.closeConn(myConnection);
-            Console.Read();
+            Console.Read();*/
 
+        }
     }
 }
