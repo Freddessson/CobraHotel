@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
-namespace Controller
+namespace CobraHotel.Controller
 {
     public class Controller
     {

@@ -7,7 +7,7 @@ using DAL;
 using System.Data.SqlClient;
 using Model;
 
-namespace DAL
+namespace CobraHotel.DAL
 {
     public class CustomerDAL
     {
