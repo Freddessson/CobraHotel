@@ -46,7 +46,7 @@ namespace View
             cCheck.pnr = "defaultValue";
             cCheck = CController.ShowCustomer(c.pnr);
             
-            if (cCheck.pnr != null){
+            if (cCheck.pnr == c.pnr){
                 labelMessage.Text = "Personnumret du matade in finns redan.";
                 //CController.CreateCustomer(c);
                 //CController.ShowCustomer(c.pnr);
