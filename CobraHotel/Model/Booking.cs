@@ -8,7 +8,22 @@ namespace Model
 {
     public class Booking
     {
-        private string bookingNbr;
+        public Booking()
+        {
+        }
+        public Booking(string bookingNbr, string period, int price)
+        {
+            this.bookingNbr = bookingNbr;
+            this.period = period;
+            
+        }
+
+        public string bookingNbr { get; set; }
+        public string period { get; set; }
+        public string price { get; set; }
+    }
+}
+ /*       private string bookingNbr;
         private int price;
         private string period;
         //private Customer customer { get; set; }
@@ -61,3 +76,4 @@ namespace Model
         }
     }
 }
+*/
