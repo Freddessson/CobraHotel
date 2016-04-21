@@ -14,15 +14,22 @@ namespace Controller
     {
         public void CreateCustomer(Customer c)
         {
-            //CreateCustomer(c);
             CustomerDAL.CreateCustomer(c);
         }
-       
+
         public Customer FindCustomer(string pnr)
         {
             CustomerDAL.FindCustomer(pnr);
             Customer c = DAL.CustomerDAL.FindCustomer(pnr);
             return c;
+        }
+
+        public List<Customer> FindAllCustomers()
+        {
+            CustomerDAL.FindAllCustomers();
+            List<Customer> customerList = new List<Customer>();
+            customerList = DAL.CustomerDAL.FindAllCustomers();
+            return customerList;
         }
     }
 }

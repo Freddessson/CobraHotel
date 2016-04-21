@@ -55,6 +55,11 @@ namespace View
                 CController.CreateCustomer(c);
                 CController.FindCustomer(c.pnr);
                 labelMessage.Text = "Kund skapad!";
+                textBoxName.Text = "";
+                textBoxPnr.Text = "";
+                textBoxEmail.Text = "";
+                textBoxPhone.Text = "";
+                textBoxAddress.Text = "";
                 //Console.WriteLine("Du matade in { 0}.",c.pnr);
             }
 
@@ -107,13 +112,37 @@ namespace View
             CustomerController CController = new CustomerController();
             Customer c = new Customer();
             c.pnr = textBoxSearchCByPnr.Text;
-            Customer cCheck = new Customer();
-            cCheck = CController.FindCustomer(c.pnr);
+            c = CController.FindCustomer(c.pnr);
+            //labelMessage.Text = c.address;
+            dataGridView1.Rows.Clear();
+            dataGridView1.Rows.Add(c.name, c.pnr, c.email, c.phone, c.address);
+            
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonFindAllCustomers_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+            CustomerController CController = new CustomerController();
+            
+            List<Customer> customerList = new List<Customer>();
+            customerList = CController.FindAllCustomers();
+            for (int i = 0; i < customerList.Count; i++)
+            {
+                Console.WriteLine("Storleken på listan är:"+ customerList.Count);
+                Customer c = new Customer();
+                //c = customerList(i);
+                dataGridView1.Rows.Add(c.name, c.pnr, c.email, c.phone, c.address);
+            }
         }
     }
 }

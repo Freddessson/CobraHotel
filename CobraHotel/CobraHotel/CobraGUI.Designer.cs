@@ -46,6 +46,12 @@
             this.labelSearchCByPnr = new System.Windows.Forms.Label();
             this.buttonFindCustomerByPnr = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pnr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonFindAllCustomers = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -201,17 +207,59 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Name,
+            this.Pnr,
+            this.Email,
+            this.Phone,
+            this.Address});
             this.dataGridView1.Location = new System.Drawing.Point(582, 108);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(544, 150);
             this.dataGridView1.TabIndex = 17;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Name
+            // 
+            this.Name.HeaderText = "Name";
+            this.Name.Name = "Name";
+            // 
+            // Pnr
+            // 
+            this.Pnr.HeaderText = "Pnr";
+            this.Pnr.Name = "Pnr";
+            // 
+            // Email
+            // 
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            // 
+            // Phone
+            // 
+            this.Phone.HeaderText = "Phone";
+            this.Phone.Name = "Phone";
+            // 
+            // Address
+            // 
+            this.Address.HeaderText = "Address";
+            this.Address.Name = "Address";
+            // 
+            // buttonFindAllCustomers
+            // 
+            this.buttonFindAllCustomers.Location = new System.Drawing.Point(403, 291);
+            this.buttonFindAllCustomers.Name = "buttonFindAllCustomers";
+            this.buttonFindAllCustomers.Size = new System.Drawing.Size(75, 23);
+            this.buttonFindAllCustomers.TabIndex = 18;
+            this.buttonFindAllCustomers.Text = "Alla kunder";
+            this.buttonFindAllCustomers.UseVisualStyleBackColor = true;
+            this.buttonFindAllCustomers.Click += new System.EventHandler(this.buttonFindAllCustomers_Click);
             // 
             // CobraGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1345, 598);
+            this.Controls.Add(this.buttonFindAllCustomers);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.buttonFindCustomerByPnr);
             this.Controls.Add(this.labelSearchCByPnr);
@@ -230,7 +278,7 @@
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.textBoxPnr);
             this.Controls.Add(this.btnCreateCustomer);
-            this.Name = "CobraGUI";
+            //this.Name = "CobraGUI";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.CobraGUI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -259,6 +307,12 @@
         private System.Windows.Forms.Label labelSearchCByPnr;
         private System.Windows.Forms.Button buttonFindCustomerByPnr;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pnr;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Phone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Address;
+        private System.Windows.Forms.Button buttonFindAllCustomers;
     }
 }
 
