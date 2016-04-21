@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace DAL
 {
     class RoomDAL
-    {
+    {//HALLÅÅÅÅÅÅÅÅ
     }
 }
 

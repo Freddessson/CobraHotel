@@ -3,22 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using System.Data.SqlClient;
+using Model;
+using System.Windows.Forms;
 
-namespace CobraHotel
+namespace View
 {
     class Program
     {
         static void Main(string[] args)
         {
 
-            //HELLOOO GROUP
-            Console.WriteLine("innan vi skapar initierar DBCOnn");
-            DBUtil d = new DBUtil();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new CobraGUI());
 
-            Console.WriteLine("Innan SQL");
+            //Customer c = new Customer("name", "pnr", "email", "phone", "address");
+            //DAL.CustomerDAL.CreateCustomer(c);
+
+            /*
+            DBUtil d = new DBUtil();
             SqlConnection myConnection = d.connection();
+
             if (myConnection != null)
             {
                 SqlCommand myCommand = new SqlCommand("INSERT INTO dbo.customer (pnr, name, email, phone, address) " +
@@ -31,7 +37,8 @@ namespace CobraHotel
                 Console.WriteLine("null");
             }
             d.closeConn(myConnection);
-            Console.Read();
+            Console.Read();*/
 
+        }
     }
 }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CobraHotel.Properties
+namespace View.Properties
 {
 
 
