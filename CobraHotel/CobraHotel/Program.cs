@@ -4,17 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-using DAL;
+using Model;
+using System.Windows.Forms;
 
-namespace CobraHotel
+namespace View
 {
     class Program
     {
         static void Main(string[] args)
         {
 
-            
-       
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new CobraGUI());
+
+            //Customer c = new Customer("name", "pnr", "email", "phone", "address");
+            //DAL.CustomerDAL.CreateCustomer(c);
+
+            /*
             DBUtil d = new DBUtil();
             SqlConnection myConnection = d.connection();
 
@@ -30,7 +37,8 @@ namespace CobraHotel
                 Console.WriteLine("null");
             }
             d.closeConn(myConnection);
-            Console.Read();
+            Console.Read();*/
 
+        }
     }
 }

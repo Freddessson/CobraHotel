@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CobraHotel", "CobraHotel\CobraHotel.csproj", "{4346EE21-5D37-41B6-88AB-4D6FE3A4BFB6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "CobraHotel\View.csproj", "{4346EE21-5D37-41B6-88AB-4D6FE3A4BFB6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller", "Controller\Controller.csproj", "{2ADC868E-E2B8-4F30-BC79-A5A11DE816E7}"
 EndProject
