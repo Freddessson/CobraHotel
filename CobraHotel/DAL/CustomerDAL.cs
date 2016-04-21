@@ -93,15 +93,25 @@ namespace DAL
                 SqlDataReader myReader = null;
                 SqlCommand cmd = new SqlCommand("SELECT * FROM customer", myConnection);
                 myReader = cmd.ExecuteReader();
+                int counter = 0;
                 while (myReader.Read())
                 {
-                    c.pnr = myReader["pnr"].ToString();
+                    counter += 1;
+                    /*c.pnr = myReader["pnr"].ToString();
                     c.name = myReader["name"].ToString();
                     c.email = myReader["email"].ToString();
                     c.phone = myReader["phone"].ToString();
                     c.address = myReader["address"].ToString();
+                    customerList.Add(c);*/
+                    
+                }
+                
+                for (int i = 0; i < counter; i++)
+                {
+                    //myReader.get  
                     customerList.Add(c);
                 }
+                
                 return customerList;
                 //Close connection to DB.
                 //conn.closeConn(myConnection);
