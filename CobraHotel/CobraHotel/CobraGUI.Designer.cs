@@ -40,6 +40,13 @@
             this.labelPhone = new System.Windows.Forms.Label();
             this.labelAddress = new System.Windows.Forms.Label();
             this.labelMessage = new System.Windows.Forms.Label();
+            this.labelCreateCustomerTitle = new System.Windows.Forms.Label();
+            this.labelSearchCustomer = new System.Windows.Forms.Label();
+            this.textBoxSearchCByPnr = new System.Windows.Forms.TextBox();
+            this.labelSearchCByPnr = new System.Windows.Forms.Label();
+            this.buttonFindCustomerByPnr = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCreateCustomer
@@ -146,11 +153,71 @@
             this.labelMessage.TabIndex = 11;
             this.labelMessage.Click += new System.EventHandler(this.label1_Click_2);
             // 
+            // labelCreateCustomerTitle
+            // 
+            this.labelCreateCustomerTitle.AutoSize = true;
+            this.labelCreateCustomerTitle.Location = new System.Drawing.Point(220, 59);
+            this.labelCreateCustomerTitle.Name = "labelCreateCustomerTitle";
+            this.labelCreateCustomerTitle.Size = new System.Drawing.Size(65, 13);
+            this.labelCreateCustomerTitle.TabIndex = 12;
+            this.labelCreateCustomerTitle.Text = "Skapa kund";
+            this.labelCreateCustomerTitle.Click += new System.EventHandler(this.label1_Click_3);
+            // 
+            // labelSearchCustomer
+            // 
+            this.labelSearchCustomer.AutoSize = true;
+            this.labelSearchCustomer.Location = new System.Drawing.Point(400, 59);
+            this.labelSearchCustomer.Name = "labelSearchCustomer";
+            this.labelSearchCustomer.Size = new System.Drawing.Size(53, 13);
+            this.labelSearchCustomer.TabIndex = 13;
+            this.labelSearchCustomer.Text = "Sök kund";
+            // 
+            // textBoxSearchCByPnr
+            // 
+            this.textBoxSearchCByPnr.Location = new System.Drawing.Point(403, 108);
+            this.textBoxSearchCByPnr.Name = "textBoxSearchCByPnr";
+            this.textBoxSearchCByPnr.Size = new System.Drawing.Size(100, 20);
+            this.textBoxSearchCByPnr.TabIndex = 14;
+            // 
+            // labelSearchCByPnr
+            // 
+            this.labelSearchCByPnr.AutoSize = true;
+            this.labelSearchCByPnr.Location = new System.Drawing.Point(363, 110);
+            this.labelSearchCByPnr.Name = "labelSearchCByPnr";
+            this.labelSearchCByPnr.Size = new System.Drawing.Size(26, 13);
+            this.labelSearchCByPnr.TabIndex = 15;
+            this.labelSearchCByPnr.Text = "Pnr:";
+            // 
+            // buttonFindCustomerByPnr
+            // 
+            this.buttonFindCustomerByPnr.Location = new System.Drawing.Point(403, 261);
+            this.buttonFindCustomerByPnr.Name = "buttonFindCustomerByPnr";
+            this.buttonFindCustomerByPnr.Size = new System.Drawing.Size(75, 23);
+            this.buttonFindCustomerByPnr.TabIndex = 16;
+            this.buttonFindCustomerByPnr.Text = "Hitta kund";
+            this.buttonFindCustomerByPnr.UseVisualStyleBackColor = true;
+            this.buttonFindCustomerByPnr.Click += new System.EventHandler(this.buttonFindCustomerByPnr_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(582, 108);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.TabIndex = 17;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
             // CobraGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1345, 598);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.buttonFindCustomerByPnr);
+            this.Controls.Add(this.labelSearchCByPnr);
+            this.Controls.Add(this.textBoxSearchCByPnr);
+            this.Controls.Add(this.labelSearchCustomer);
+            this.Controls.Add(this.labelCreateCustomerTitle);
             this.Controls.Add(this.labelMessage);
             this.Controls.Add(this.labelAddress);
             this.Controls.Add(this.labelPhone);
@@ -165,6 +232,8 @@
             this.Controls.Add(this.btnCreateCustomer);
             this.Name = "CobraGUI";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.CobraGUI_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -184,6 +253,12 @@
         private System.Windows.Forms.Label labelPhone;
         private System.Windows.Forms.Label labelAddress;
         private System.Windows.Forms.Label labelMessage;
+        private System.Windows.Forms.Label labelCreateCustomerTitle;
+        private System.Windows.Forms.Label labelSearchCustomer;
+        private System.Windows.Forms.TextBox textBoxSearchCByPnr;
+        private System.Windows.Forms.Label labelSearchCByPnr;
+        private System.Windows.Forms.Button buttonFindCustomerByPnr;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

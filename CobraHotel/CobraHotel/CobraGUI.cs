@@ -43,8 +43,8 @@ namespace View
             //if(c.pnr inte finns i databasen, kör: )
 
             Customer cCheck = new Customer();
-            cCheck.pnr = "defaultValue";
-            cCheck = CController.ShowCustomer(c.pnr);
+            //cCheck.pnr = "defaultValue";
+            cCheck = CController.FindCustomer(c.pnr);
             
             if (cCheck.pnr == c.pnr){
                 labelMessage.Text = "Personnumret du matade in finns redan.";
@@ -53,7 +53,7 @@ namespace View
             }else
             {
                 CController.CreateCustomer(c);
-                CController.ShowCustomer(c.pnr);
+                CController.FindCustomer(c.pnr);
                 labelMessage.Text = "Kund skapad!";
                 //Console.WriteLine("Du matade in { 0}.",c.pnr);
             }
@@ -88,6 +88,30 @@ namespace View
         }
 
         private void label1_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CobraGUI_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_3(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonFindCustomerByPnr_Click(object sender, EventArgs e)
+        {
+            CustomerController CController = new CustomerController();
+            Customer c = new Customer();
+            c.pnr = textBoxSearchCByPnr.Text;
+            Customer cCheck = new Customer();
+            cCheck = CController.FindCustomer(c.pnr);
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

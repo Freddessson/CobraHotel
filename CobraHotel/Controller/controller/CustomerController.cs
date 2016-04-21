@@ -18,10 +18,10 @@ namespace Controller
             CustomerDAL.CreateCustomer(c);
         }
        
-        public Customer ShowCustomer(string pnr)
+        public Customer FindCustomer(string pnr)
         {
-            CustomerDAL.ShowCustomer(pnr);
-            Customer c = DAL.CustomerDAL.ShowCustomer(pnr);
+            CustomerDAL.FindCustomer(pnr);
+            Customer c = DAL.CustomerDAL.FindCustomer(pnr);
             return c;
         }
     }

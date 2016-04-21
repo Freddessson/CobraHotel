@@ -52,7 +52,7 @@ namespace DAL
 
         
 
-        public static Customer ShowCustomer(string pnr)
+        public static Customer FindCustomer(string pnr)
         {
             DBUtil conn = new DBUtil();
             SqlConnection myConnection = conn.connection();
@@ -72,7 +72,7 @@ namespace DAL
                 }
                 return c;
                 //Close connection to DB.
-                conn.closeConn(myConnection);
+                //conn.closeConn(myConnection);
 
             }
             
