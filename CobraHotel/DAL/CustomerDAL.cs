@@ -22,26 +22,25 @@ namespace DAL
             string email = c.email;
             string phone = c.phone;
             string address = c.address;
+            
             try
             {
-                /*SqlCommand myCommand = new SqlCommand("INSERT INTO dbo.customer (pnr, name, email, phone, address) " +
-                                "VALUES (@pnr, @name, @email, @phone, @address);", myConnection);
-                //"Values (94, 'Otto', 'fredriksson.otto@gmail.com', 0732206670, 'NotarieG')", myConnection);*/
-                string query = "INSERT INTO dbo.customer (pnr, name, email, phone, address) " +
-                    "VALUES (@pnr, @name, @email, @phone, @address);";
-                Console.WriteLine("crash 1");
-                SqlCommand command = new SqlCommand(query, myConnection);
-                Console.WriteLine("crash 2");
-                command.Parameters.Add("@pnr", SqlDbType.NChar).Value = "abc";
-                command.Parameters.Add("@name", SqlDbType.NChar).Value = "abc";
-                command.Parameters.Add("@email", SqlDbType.NChar).Value = "abc";
-                command.Parameters.Add("@phone", SqlDbType.NChar).Value = "abc";
-                command.Parameters.Add("@address", SqlDbType.NChar).Value = "abc";
-                Console.WriteLine("crash 3");
-                myConnection.BeginTransaction();
-                Console.WriteLine("crash 4");
-                //myCommand.ExecuteNonQuery();
-                Console.WriteLine("Efter SQL");
+
+                using (myConnection)
+                {
+                   
+                    string sql = "INSERT INTO dbo.customer (pnr, name, email, phone, address) VALUES (@pnr, @name, @email, @phone, @address)";
+                    SqlCommand cmd = new SqlCommand(sql, myConnection);
+                    cmd.Parameters.Add("@pnr", SqlDbType.VarChar).Value = pnr;
+                    cmd.Parameters.Add("@name", SqlDbType.VarChar, 50).Value = name;
+                    cmd.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = email;
+                    cmd.Parameters.Add("@phone", SqlDbType.VarChar, 50).Value = phone;
+                    cmd.Parameters.Add("@address", SqlDbType.VarChar, 50).Value = address;
+                    cmd.CommandType = CommandType.Text;
+                    cmd.ExecuteNonQuery();
+                }
+                
+            
             }
             catch (SqlException)
             {
@@ -53,7 +52,7 @@ namespace DAL
 
         
 
-        /*public Customer ShowCustomer(string pnr)
+        public static Customer ShowCustomer(string pnr)
         {
             DBUtil conn = new DBUtil();
             SqlConnection myConnection = conn.connection();
@@ -61,24 +60,28 @@ namespace DAL
             {
                 Customer c = new Customer();
                 SqlDataReader myReader = null;
-                SqlCommand myCommand = new SqlCommand("select * from customer where pnr = " + pnr,
-                                                         myConnection);
-                myReader = myCommand.ExecuteReader();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM customer WHERE pnr = " + pnr, myConnection);
+                myReader = cmd.ExecuteReader();
                 while (myReader.Read())
                 {
-                    c.Pnr = myReader["pnr"].ToString();
-                    c.Name = myReader["name"].ToString();
-                    c.Email = myReader["email"].ToString();
-                    c.Phone = myReader["phone"].ToString();
-                    c.Address = myReader["address"].ToString();
+                    c.pnr = myReader["pnr"].ToString();
+                    c.name = myReader["name"].ToString();
+                    c.email = myReader["email"].ToString();
+                    c.phone = myReader["phone"].ToString();
+                    c.address = myReader["address"].ToString();
                 }
                 return c;
+                //Close connection to DB.
+                conn.closeConn(myConnection);
+
             }
+            
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
             }
             return null;
-        }*/
+            
+        }
     }
 }

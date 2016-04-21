@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-using DAL;
 using Model;
+using System.Windows.Forms;
 
 namespace View
 {
@@ -13,8 +13,13 @@ namespace View
     {
         static void Main(string[] args)
         {
-            Customer c = new Customer("name", "pnr", "email", "phone", "address");
-            DAL.CustomerDAL.CreateCustomer(c);
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new CobraGUI());
+
+            //Customer c = new Customer("name", "pnr", "email", "phone", "address");
+            //DAL.CustomerDAL.CreateCustomer(c);
 
             /*
             DBUtil d = new DBUtil();
