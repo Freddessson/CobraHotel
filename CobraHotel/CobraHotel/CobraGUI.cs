@@ -136,13 +136,12 @@ namespace View
             
             List<Customer> customerList = new List<Customer>();
             customerList = CController.FindAllCustomers();
-            for (int i = 0; i < customerList.Count; i++)
-            {
-                Console.WriteLine("Storleken på listan är:"+ customerList.Count);
-                Customer c = new Customer();
-                //c = customerList(i);
+            //for (int i = 0; i < customerList.Count; i++)
+            foreach (Customer c in customerList)
+            {                
                 dataGridView1.Rows.Add(c.name, c.pnr, c.email, c.phone, c.address);
             }
+            Console.WriteLine("Storleken på listan är:" + customerList.Count);
         }
     }
 }
