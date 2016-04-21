@@ -10,3 +10,4 @@ namespace DAL
     {
     }
 }
+//liten kommentar från henkes dator.
