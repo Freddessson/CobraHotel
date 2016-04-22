@@ -8,101 +8,25 @@ namespace Model
 {
     public class Room
     {
-        private int price;
-        private int beds;
-        private string roomNumber;
-        private string roomId;
-        private string available;
-        private string period;
-        //private Hotel hotel;
-        //private Set<Booking> booking;
-
-        public Room(int price, int beds, string roomNumber, string roomId, string available, string period)
+        public Room()
         {
-            this.Price = price;
-            this.Beds = beds;
-            this.RoomNumber = roomNumber;
-            this.RoomId = roomId;
-            this.Available = available;
-            this.Period = period;
+        }
+          public Room(int price, int beds, string roomNumber, string roomId, string available, string period)
+        {
+            this.price = price;
+            this.beds = beds;
+            this.roomNumber = roomNumber;
+            this.roomId = roomId;
+            this.available = available;
+            this.period = period;
         }
 
-        public int Price
-        {
-            get
-            {
-                return price;
-            }
-
-            set
-            {
-                price = value;
-            }
-        }
-
-        public int Beds
-        {
-            get
-            {
-                return beds;
-            }
-
-            set
-            {
-                beds = value;
-            }
-        }
-
-        public string RoomNumber
-        {
-            get
-            {
-                return roomNumber;
-            }
-
-            set
-            {
-                roomNumber = value;
-            }
-        }
-
-        public string RoomId
-        {
-            get
-            {
-                return roomId;
-            }
-
-            set
-            {
-                roomId = value;
-            }
-        }
-
-        public string Available
-        {
-            get
-            {
-                return available;
-            }
-
-            set
-            {
-                available = value;
-            }
-        }
-
-        public string Period
-        {
-            get
-            {
-                return period;
-            }
-
-            set
-            {
-                period = value;
-            }
-        }
+        public int price { get; set; }
+        public int beds { get; set; }
+        public string roomNumber { get; set; }
+        public string roomId { get; set; }
+        public string available { get; set; }
+        public string period { get; set; }
+        
     }
 }
