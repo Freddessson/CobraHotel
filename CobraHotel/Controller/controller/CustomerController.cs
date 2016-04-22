@@ -33,7 +33,12 @@ namespace Controller
         }
         public void DeleteCustomer(string pnr)
         {
-            CustomerDAL.FindCustomer(pnr);
+            CustomerDAL.DeleteCustomer(pnr);
+        }
+        public void UpdateCustomer(Customer c)
+        {
+            CustomerDAL.UpdateCustomer(c);
+            DAL.CustomerDAL.UpdateCustomer(c);
         }
     }
 }

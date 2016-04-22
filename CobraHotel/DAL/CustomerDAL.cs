@@ -121,7 +121,7 @@ namespace DAL
             }
             return null;
         }
-        public void DeleteCustomer(string pnr)
+        public static void DeleteCustomer(string pnr)
         {
             DBUtil conn = new DBUtil();
             SqlConnection myConnection = conn.connection();
@@ -129,7 +129,25 @@ namespace DAL
             string sql = "Delete from customer WHERE pnr = " + pnr;
             SqlCommand cmd = new SqlCommand(sql, myConnection);
             cmd.ExecuteNonQuery();
-            conn.closeConn();
+            //conn.closeConn();
+        }
+        public static void UpdateCustomer(Customer c)
+        {
+            DBUtil conn = new DBUtil();
+            SqlConnection myConnection = conn.connection();
+            string sql = "UPDATE customer SET (pnr, name, email, phone, address) VALUES (@pnr, @name, @email, @phone, @address)"
+                + "WHERE pnr = " +c.pnr;
+            //INFO SET id='" + txtId.Text + "', name='" + txtName.Text + "' where id='" + listBox1.SelectedItem.ToString() + "' and name= '" + listBox2.SelectedItem.ToString() + "'";
+            SqlCommand cmd = new SqlCommand(sql, myConnection);
+
+            cmd.Parameters.Add("@pnr", SqlDbType.VarChar).Value = c.pnr;
+            cmd.Parameters.Add("@name", SqlDbType.VarChar, 50).Value = c.name;
+            cmd.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = c.email;
+            cmd.Parameters.Add("@phone", SqlDbType.VarChar, 50).Value = c.phone;
+            cmd.Parameters.Add("@address", SqlDbType.VarChar, 50).Value = c.address;
+            cmd.CommandType = CommandType.Text;
+
+            cmd.ExecuteNonQuery();
         }
     }
 }
