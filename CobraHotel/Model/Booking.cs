@@ -11,69 +11,18 @@ namespace Model
         public Booking()
         {
         }
-        public Booking(string bookingNbr, string period, int price)
+        public Booking(int price, string bookingNbr, string period)
         {
+            this.price = price;
             this.bookingNbr = bookingNbr;
             this.period = period;
+            
             
         }
 
         public string bookingNbr { get; set; }
         public string period { get; set; }
-        public string price { get; set; }
+        public int price { get; set; }
     }
 }
- /*       private string bookingNbr;
-        private int price;
-        private string period;
-        //private Customer customer { get; set; }
-        //private Room room { get; set; }
-
-        public Booking(string bookingNbr, int price, string period)
-        {
-            this.bookingNbr = bookingNbr;
-            this.price = price;
-            this.period = period;
-        }
-
-        public string BookingNbr
-        {
-            get
-            {
-                return bookingNbr;
-            }
-
-            set
-            {
-                bookingNbr = value;
-            }
-        }
-
-        public int Price
-        {
-            get
-            {
-                return price;
-            }
-
-            set
-            {
-                price = value;
-            }
-        }
-
-        public string Period
-        {
-            get
-            {
-                return period;
-            }
-
-            set
-            {
-                period = value;
-            }
-        }
-    }
-}
-*/
+ 
