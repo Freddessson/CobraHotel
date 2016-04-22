@@ -1,4 +1,6 @@
-﻿namespace View
+﻿using System.Windows.Forms;
+
+namespace View
 {
     partial class CobraGUI
     {
@@ -45,14 +47,10 @@
             this.textBoxSearchCByPnr = new System.Windows.Forms.TextBox();
             this.labelSearchCByPnr = new System.Windows.Forms.Label();
             this.buttonFindCustomerByPnr = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pnr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonFindAllCustomers = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.buttonDeleteCustomer = new System.Windows.Forms.Button();
+            this.dataGridViewCustomer = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomer)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCreateCustomer
@@ -172,7 +170,7 @@
             // labelSearchCustomer
             // 
             this.labelSearchCustomer.AutoSize = true;
-            this.labelSearchCustomer.Location = new System.Drawing.Point(400, 59);
+            this.labelSearchCustomer.Location = new System.Drawing.Point(579, 262);
             this.labelSearchCustomer.Name = "labelSearchCustomer";
             this.labelSearchCustomer.Size = new System.Drawing.Size(53, 13);
             this.labelSearchCustomer.TabIndex = 13;
@@ -180,7 +178,7 @@
             // 
             // textBoxSearchCByPnr
             // 
-            this.textBoxSearchCByPnr.Location = new System.Drawing.Point(403, 108);
+            this.textBoxSearchCByPnr.Location = new System.Drawing.Point(582, 282);
             this.textBoxSearchCByPnr.Name = "textBoxSearchCByPnr";
             this.textBoxSearchCByPnr.Size = new System.Drawing.Size(100, 20);
             this.textBoxSearchCByPnr.TabIndex = 14;
@@ -188,7 +186,7 @@
             // labelSearchCByPnr
             // 
             this.labelSearchCByPnr.AutoSize = true;
-            this.labelSearchCByPnr.Location = new System.Drawing.Point(363, 110);
+            this.labelSearchCByPnr.Location = new System.Drawing.Point(539, 289);
             this.labelSearchCByPnr.Name = "labelSearchCByPnr";
             this.labelSearchCByPnr.Size = new System.Drawing.Size(26, 13);
             this.labelSearchCByPnr.TabIndex = 15;
@@ -196,7 +194,7 @@
             // 
             // buttonFindCustomerByPnr
             // 
-            this.buttonFindCustomerByPnr.Location = new System.Drawing.Point(403, 261);
+            this.buttonFindCustomerByPnr.Location = new System.Drawing.Point(582, 308);
             this.buttonFindCustomerByPnr.Name = "buttonFindCustomerByPnr";
             this.buttonFindCustomerByPnr.Size = new System.Drawing.Size(75, 23);
             this.buttonFindCustomerByPnr.TabIndex = 16;
@@ -204,49 +202,9 @@
             this.buttonFindCustomerByPnr.UseVisualStyleBackColor = true;
             this.buttonFindCustomerByPnr.Click += new System.EventHandler(this.buttonFindCustomerByPnr_Click);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Name,
-            this.Pnr,
-            this.Email,
-            this.Phone,
-            this.Address});
-            this.dataGridView1.Location = new System.Drawing.Point(582, 108);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(544, 150);
-            this.dataGridView1.TabIndex = 17;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Name
-            // 
-            this.Name.HeaderText = "Name";
-            this.Name.Name = "Name";
-            // 
-            // Pnr
-            // 
-            this.Pnr.HeaderText = "Pnr";
-            this.Pnr.Name = "Pnr";
-            // 
-            // Email
-            // 
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            // 
-            // Phone
-            // 
-            this.Phone.HeaderText = "Phone";
-            this.Phone.Name = "Phone";
-            // 
-            // Address
-            // 
-            this.Address.HeaderText = "Address";
-            this.Address.Name = "Address";
-            // 
             // buttonFindAllCustomers
             // 
-            this.buttonFindAllCustomers.Location = new System.Drawing.Point(403, 291);
+            this.buttonFindAllCustomers.Location = new System.Drawing.Point(966, 280);
             this.buttonFindAllCustomers.Name = "buttonFindAllCustomers";
             this.buttonFindAllCustomers.Size = new System.Drawing.Size(75, 23);
             this.buttonFindAllCustomers.TabIndex = 18;
@@ -254,13 +212,33 @@
             this.buttonFindAllCustomers.UseVisualStyleBackColor = true;
             this.buttonFindAllCustomers.Click += new System.EventHandler(this.buttonFindAllCustomers_Click);
             // 
+            // buttonDeleteCustomer
+            // 
+            this.buttonDeleteCustomer.Location = new System.Drawing.Point(1047, 280);
+            this.buttonDeleteCustomer.Name = "buttonDeleteCustomer";
+            this.buttonDeleteCustomer.Size = new System.Drawing.Size(75, 23);
+            this.buttonDeleteCustomer.TabIndex = 19;
+            this.buttonDeleteCustomer.Text = "Ta bort";
+            this.buttonDeleteCustomer.UseVisualStyleBackColor = true;
+            this.buttonDeleteCustomer.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // dataGridViewCustomer
+            // 
+            this.dataGridViewCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCustomer.Location = new System.Drawing.Point(582, 59);
+            this.dataGridViewCustomer.Name = "dataGridViewCustomer";
+            this.dataGridViewCustomer.Size = new System.Drawing.Size(573, 201);
+            this.dataGridViewCustomer.TabIndex = 20;
+            this.dataGridViewCustomer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
+            // 
             // CobraGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1345, 598);
+            this.Controls.Add(this.dataGridViewCustomer);
+            this.Controls.Add(this.buttonDeleteCustomer);
             this.Controls.Add(this.buttonFindAllCustomers);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.buttonFindCustomerByPnr);
             this.Controls.Add(this.labelSearchCByPnr);
             this.Controls.Add(this.textBoxSearchCByPnr);
@@ -278,10 +256,10 @@
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.textBoxPnr);
             this.Controls.Add(this.btnCreateCustomer);
-            //this.Name = "CobraGUI";
+            this.Name = "CobraGUI";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.CobraGUI_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -306,13 +284,10 @@
         private System.Windows.Forms.TextBox textBoxSearchCByPnr;
         private System.Windows.Forms.Label labelSearchCByPnr;
         private System.Windows.Forms.Button buttonFindCustomerByPnr;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Pnr;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Phone;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Address;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name2;
         private System.Windows.Forms.Button buttonFindAllCustomers;
+        private Button buttonDeleteCustomer;
+        private DataGridView dataGridViewCustomer;
     }
 }
 

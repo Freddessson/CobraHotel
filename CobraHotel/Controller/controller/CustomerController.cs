@@ -31,5 +31,9 @@ namespace Controller
             customerList = DAL.CustomerDAL.FindAllCustomers();
             return customerList;
         }
+        public void DeleteCustomer(string pnr)
+        {
+            CustomerDAL.FindCustomer(pnr);
+        }
     }
 }

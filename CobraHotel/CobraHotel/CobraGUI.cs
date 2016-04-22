@@ -114,9 +114,24 @@ namespace View
             c.pnr = textBoxSearchCByPnr.Text;
             c = CController.FindCustomer(c.pnr);
             //labelMessage.Text = c.address;
-            dataGridView1.Rows.Clear();
-            dataGridView1.Rows.Add(c.name, c.pnr, c.email, c.phone, c.address);
-            
+            //dataGridViewCustomer.Rows.Clear();
+            //dataGridViewCustomer.Rows.Add(c.name, c.pnr, c.email, c.phone, c.address);
+            DataTable dt = new DataTable();
+            dataGridViewCustomer.DataSource = dt;
+            dataGridViewCustomer.ClearSelection();
+            dt.Columns.Add("Namn");
+            dt.Columns.Add("Pnr");
+            dt.Columns.Add("Email");
+            dt.Columns.Add("Phone");
+            dt.Columns.Add("Address");
+
+            DataRow row = dt.NewRow();
+            row["Namn"] = c.name;
+            row["Pnr"] = c.pnr;
+            row["Email"] = c.email;
+            row["Phone"] = c.phone;
+            row["Address"] = c.address;
+            dt.Rows.Add(row);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -131,7 +146,16 @@ namespace View
 
         private void buttonFindAllCustomers_Click(object sender, EventArgs e)
         {
-            dataGridView1.Rows.Clear();
+            DataTable dt = new DataTable();
+            dataGridViewCustomer.DataSource = dt;
+            dataGridViewCustomer.ClearSelection();
+            dt.Columns.Add("Namn");
+            dt.Columns.Add("Pnr");
+            dt.Columns.Add("Email");
+            dt.Columns.Add("Phone");
+            dt.Columns.Add("Address");
+
+
             CustomerController CController = new CustomerController();
             
             List<Customer> customerList = new List<Customer>();
@@ -139,9 +163,27 @@ namespace View
             //for (int i = 0; i < customerList.Count; i++)
             foreach (Customer c in customerList)
             {                
-                dataGridView1.Rows.Add(c.name, c.pnr, c.email, c.phone, c.address);
+                //dataGridViewCustomer.Rows.Add(c.name, c.pnr, c.email, c.phone, c.address);
+                //dt.Columns.Add(c.name, c.pnr, c.email, c.phone, c.address);
+                DataRow row = dt.NewRow();
+                row["Namn"] = c.name;
+                row["Pnr"] = c.pnr;
+                row["Email"] = c.email;
+                row["Phone"] = c.phone;
+                row["Address"] = c.address;
+                dt.Rows.Add(row);
             }
             Console.WriteLine("Storleken på listan är:" + customerList.Count);
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

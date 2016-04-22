@@ -43,5 +43,9 @@ namespace DAL
 
         }
 
+        internal void closeConn()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

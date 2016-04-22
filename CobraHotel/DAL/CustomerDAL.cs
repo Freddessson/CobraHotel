@@ -22,12 +22,12 @@ namespace DAL
             string email = c.email;
             string phone = c.phone;
             string address = c.address;
-            
+
             try
             {
                 using (myConnection)
                 {
-                   
+
                     string sql = "INSERT INTO dbo.customer (pnr, name, email, phone, address) VALUES (@pnr, @name, @email, @phone, @address)";
                     SqlCommand cmd = new SqlCommand(sql, myConnection);
                     cmd.Parameters.Add("@pnr", SqlDbType.VarChar).Value = pnr;
@@ -38,8 +38,8 @@ namespace DAL
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
                 }
-                
-            
+
+
             }
             catch (SqlException)
             {
@@ -49,7 +49,7 @@ namespace DAL
             conn.closeConn(myConnection);
         }
 
-        
+
 
         public static Customer FindCustomer(string pnr)
         {
@@ -71,16 +71,16 @@ namespace DAL
                 }
                 return c;
                 //Close connection to DB.
-                //conn.closeConn(myConnection);
+                conn.closeConn(myConnection);
 
             }
-            
+
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
             }
             return null;
-            
+
         }
         public static List<Customer> FindAllCustomers()
         {
@@ -88,30 +88,27 @@ namespace DAL
             SqlConnection myConnection = conn.connection();
             try
             {
-                Customer c = new Customer();
-                List <Customer> customerList = new List<Customer>();
+
+                List<Customer> customerList = new List<Customer>();
                 SqlDataReader myReader = null;
                 SqlCommand cmd = new SqlCommand("SELECT * FROM customer", myConnection);
                 myReader = cmd.ExecuteReader();
-                int counter = 0;
+
                 while (myReader.Read())
                 {
-                    counter += 1;
-                    /*c.pnr = myReader["pnr"].ToString();
+                    Customer c = new Customer();
+                    c.pnr = myReader["pnr"].ToString();
                     c.name = myReader["name"].ToString();
                     c.email = myReader["email"].ToString();
                     c.phone = myReader["phone"].ToString();
                     c.address = myReader["address"].ToString();
-                    customerList.Add(c);*/
-                    
-                }
-                
-                for (int i = 0; i < counter; i++)
-                {
-                    //myReader.get  
+
+
                     customerList.Add(c);
                 }
-                
+
+
+
                 return customerList;
                 //Close connection to DB.
                 //conn.closeConn(myConnection);
@@ -123,6 +120,16 @@ namespace DAL
                 Console.WriteLine(e.ToString());
             }
             return null;
+        }
+        public void DeleteCustomer(string pnr)
+        {
+            DBUtil conn = new DBUtil();
+            SqlConnection myConnection = conn.connection();
+
+            string sql = "Delete from customer WHERE pnr = " + pnr;
+            SqlCommand cmd = new SqlCommand(sql, myConnection);
+            cmd.ExecuteNonQuery();
+            conn.closeConn();
         }
     }
 }
