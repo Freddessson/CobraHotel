@@ -180,7 +180,6 @@ namespace View
                 row["Address"] = c.address;
                 dt.Rows.Add(row);
             }
-            Console.WriteLine("Storleken på listan är:" + customerList.Count);
         }
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
@@ -203,12 +202,10 @@ namespace View
             Customer c = new Customer();
             DataGridViewRow row = dataGridViewCustomer.SelectedRows[0];
             c.pnr = row.Cells["Pnr"].Value.ToString();
-            Console.WriteLine(row.Cells["Pnr"].Value.ToString());
             c.name = row.Cells["Namn"].Value.ToString();
-            Console.WriteLine("HEJEHEJEJJEJE"+row.Cells["Namn"].Value.ToString());
-            c.name = row.Cells["Email"].Value.ToString();
-            c.name = row.Cells["Phone"].Value.ToString();
-            c.name = row.Cells["Address"].Value.ToString();
+            c.email = row.Cells["Email"].Value.ToString();
+            c.phone = row.Cells["Phone"].Value.ToString();
+            c.address = row.Cells["Address"].Value.ToString();
 
             CustomerController CController = new CustomerController();
             CController.UpdateCustomer(c);

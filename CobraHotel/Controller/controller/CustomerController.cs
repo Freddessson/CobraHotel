@@ -38,7 +38,6 @@ namespace Controller
         public void UpdateCustomer(Customer c)
         {
             CustomerDAL.UpdateCustomer(c);
-            DAL.CustomerDAL.UpdateCustomer(c);
         }
     }
 }
