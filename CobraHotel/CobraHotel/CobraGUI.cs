@@ -17,7 +17,14 @@ namespace View
         public CobraGUI()
         {
             InitializeComponent();
+            dataGridViewCustomer.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewCustomer.SelectionChanged += new EventHandler((s, e) =>
+            {
+
+            });
+            dataGridViewCustomer.MultiSelect = false;
         }
+
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -176,14 +183,37 @@ namespace View
             Console.WriteLine("Storleken på listan är:" + customerList.Count);
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        private void buttonDeleteCustomer_Click(object sender, EventArgs e)
         {
+            DataGridViewRow row = dataGridViewCustomer.SelectedRows[0];
+            string pnr = row.Cells["Pnr"].Value.ToString();
+            CustomerController CController = new CustomerController();
+            CController.DeleteCustomer(pnr);
+            dataGridViewCustomer.ClearSelection();
+            buttonFindAllCustomers.PerformClick();
+        }
 
+        private void buttonEditCustomer_Click(object sender, EventArgs e)
+        {
+            Customer c = new Customer();
+            DataGridViewRow row = dataGridViewCustomer.SelectedRows[0];
+            c.pnr = row.Cells["Pnr"].Value.ToString();
+            Console.WriteLine(row.Cells["Pnr"].Value.ToString());
+            c.name = row.Cells["Namn"].Value.ToString();
+            Console.WriteLine("HEJEHEJEJJEJE"+row.Cells["Name"].Value.ToString());
+            c.name = row.Cells["Email"].Value.ToString();
+            c.name = row.Cells["Phone"].Value.ToString();
+            c.name = row.Cells["Address"].Value.ToString();
+
+            CustomerController CController = new CustomerController();
+            CController.UpdateCustomer(c);
+            dataGridViewCustomer.ClearSelection();
+            buttonFindAllCustomers.PerformClick();
         }
     }
 }

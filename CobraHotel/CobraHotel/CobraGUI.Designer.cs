@@ -48,8 +48,9 @@ namespace View
             this.labelSearchCByPnr = new System.Windows.Forms.Label();
             this.buttonFindCustomerByPnr = new System.Windows.Forms.Button();
             this.buttonFindAllCustomers = new System.Windows.Forms.Button();
-            this.buttonDeleteCustomer = new System.Windows.Forms.Button();
             this.dataGridViewCustomer = new System.Windows.Forms.DataGridView();
+            this.buttonDeleteCustomer = new System.Windows.Forms.Button();
+            this.buttonEditCustomer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -212,16 +213,6 @@ namespace View
             this.buttonFindAllCustomers.UseVisualStyleBackColor = true;
             this.buttonFindAllCustomers.Click += new System.EventHandler(this.buttonFindAllCustomers_Click);
             // 
-            // buttonDeleteCustomer
-            // 
-            this.buttonDeleteCustomer.Location = new System.Drawing.Point(1047, 280);
-            this.buttonDeleteCustomer.Name = "buttonDeleteCustomer";
-            this.buttonDeleteCustomer.Size = new System.Drawing.Size(75, 23);
-            this.buttonDeleteCustomer.TabIndex = 19;
-            this.buttonDeleteCustomer.Text = "Ta bort";
-            this.buttonDeleteCustomer.UseVisualStyleBackColor = true;
-            this.buttonDeleteCustomer.Click += new System.EventHandler(this.button1_Click_1);
-            // 
             // dataGridViewCustomer
             // 
             this.dataGridViewCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -231,13 +222,34 @@ namespace View
             this.dataGridViewCustomer.TabIndex = 20;
             this.dataGridViewCustomer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
+            // buttonDeleteCustomer
+            // 
+            this.buttonDeleteCustomer.Location = new System.Drawing.Point(1047, 279);
+            this.buttonDeleteCustomer.Name = "buttonDeleteCustomer";
+            this.buttonDeleteCustomer.Size = new System.Drawing.Size(75, 23);
+            this.buttonDeleteCustomer.TabIndex = 21;
+            this.buttonDeleteCustomer.Text = "Ta bort";
+            this.buttonDeleteCustomer.UseVisualStyleBackColor = true;
+            this.buttonDeleteCustomer.Click += new System.EventHandler(this.buttonDeleteCustomer_Click);
+            // 
+            // buttonEditCustomer
+            // 
+            this.buttonEditCustomer.Location = new System.Drawing.Point(885, 280);
+            this.buttonEditCustomer.Name = "buttonEditCustomer";
+            this.buttonEditCustomer.Size = new System.Drawing.Size(75, 23);
+            this.buttonEditCustomer.TabIndex = 22;
+            this.buttonEditCustomer.Text = "Ändra";
+            this.buttonEditCustomer.UseVisualStyleBackColor = true;
+            this.buttonEditCustomer.Click += new System.EventHandler(this.buttonEditCustomer_Click);
+            // 
             // CobraGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1345, 598);
-            this.Controls.Add(this.dataGridViewCustomer);
+            this.Controls.Add(this.buttonEditCustomer);
             this.Controls.Add(this.buttonDeleteCustomer);
+            this.Controls.Add(this.dataGridViewCustomer);
             this.Controls.Add(this.buttonFindAllCustomers);
             this.Controls.Add(this.buttonFindCustomerByPnr);
             this.Controls.Add(this.labelSearchCByPnr);
@@ -286,8 +298,9 @@ namespace View
         private System.Windows.Forms.Button buttonFindCustomerByPnr;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name2;
         private System.Windows.Forms.Button buttonFindAllCustomers;
-        private Button buttonDeleteCustomer;
         private DataGridView dataGridViewCustomer;
+        private Button buttonDeleteCustomer;
+        private Button buttonEditCustomer;
     }
 }
 
