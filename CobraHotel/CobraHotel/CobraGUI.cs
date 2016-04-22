@@ -205,7 +205,7 @@ namespace View
             c.pnr = row.Cells["Pnr"].Value.ToString();
             Console.WriteLine(row.Cells["Pnr"].Value.ToString());
             c.name = row.Cells["Namn"].Value.ToString();
-            Console.WriteLine("HEJEHEJEJJEJE"+row.Cells["Name"].Value.ToString());
+            Console.WriteLine("HEJEHEJEJJEJE"+row.Cells["Namn"].Value.ToString());
             c.name = row.Cells["Email"].Value.ToString();
             c.name = row.Cells["Phone"].Value.ToString();
             c.name = row.Cells["Address"].Value.ToString();
