@@ -51,18 +51,37 @@ namespace DAL
 
 
 
-        public static Customer FindCustomer(string pnr)
+        public static Customer FindCustomer(string searchVar,string searchtype)
         {
             DBUtil conn = new DBUtil();
             SqlConnection myConnection = conn.connection();
             try
             {
                 Customer c = new Customer();
+                Console.WriteLine("SÖK PÅ EMAIL FÅN DAL1");
                 SqlDataReader myReader = null;
-                SqlCommand cmd = new SqlCommand("SELECT * FROM customer WHERE pnr = " + pnr, myConnection);
-                myReader = cmd.ExecuteReader();
+                string pnrType = "pnr";
+                string emailType = "email";
+                Console.WriteLine("SÖK PÅ EMAIL FÅN DAL2");
+                if (searchtype.Equals(pnrType))
+                {
+                    Console.WriteLine("SÖK PÅ EMAIL FÅN DAL3");
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM customer WHERE pnr = " + searchVar, myConnection);
+                    myReader = cmd.ExecuteReader();
+                }
+                Console.WriteLine("SÖK PÅ EMAIL FÅN DAL4");
+                if (searchtype.Equals(emailType))
+                {
+                    Console.WriteLine("SÖK PÅ EMAIL FÅN DAL5");
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM customer WHERE email LIKE @email+'%' "+ myConnection);
+                    cmd.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = searchVar;
+                    myReader = cmd.ExecuteReader();
+                    Console.WriteLine("SÖK PÅ EMAIL FÅN DAL6");
+                }
+
                 while (myReader.Read())
                 {
+                    Console.WriteLine("FR^ÅN DAL: "+c.phone);
                     c.pnr = myReader["pnr"].ToString();
                     c.name = myReader["name"].ToString();
                     c.email = myReader["email"].ToString();

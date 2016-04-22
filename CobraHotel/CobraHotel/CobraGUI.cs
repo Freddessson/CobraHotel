@@ -51,7 +51,9 @@ namespace View
 
             Customer cCheck = new Customer();
             //cCheck.pnr = "defaultValue";
-            cCheck = CController.FindCustomer(c.pnr);
+            string searchVar = c.pnr;
+            string searchtype = "pnr";
+            cCheck = CController.FindCustomer(searchVar, searchtype);
             
             if (cCheck.pnr == c.pnr){
                 labelMessage.Text = "Personnumret du matade in finns redan.";
@@ -60,7 +62,7 @@ namespace View
             }else
             {
                 CController.CreateCustomer(c);
-                CController.FindCustomer(c.pnr);
+                //CController.FindCustomer(c.pnr);
                 labelMessage.Text = "Kund skapad!";
                 textBoxName.Text = "";
                 textBoxPnr.Text = "";
@@ -118,11 +120,12 @@ namespace View
         {
             CustomerController CController = new CustomerController();
             Customer c = new Customer();
-            c.pnr = textBoxSearchCByPnr.Text;
-            c = CController.FindCustomer(c.pnr);
-            //labelMessage.Text = c.address;
-            //dataGridViewCustomer.Rows.Clear();
-            //dataGridViewCustomer.Rows.Add(c.name, c.pnr, c.email, c.phone, c.address);
+            string searchVar = textBoxSearchCByPnr.Text;
+            string searchtype = comboBoxSearchType.Text;
+            c = CController.FindCustomer(searchVar, searchtype);
+            Console.WriteLine("searchType: "+searchtype);
+            Console.WriteLine("searchVar: " + searchVar);
+            
             DataTable dt = new DataTable();
             dataGridViewCustomer.DataSource = dt;
             dataGridViewCustomer.ClearSelection();
@@ -211,6 +214,21 @@ namespace View
             CController.UpdateCustomer(c);
             dataGridViewCustomer.ClearSelection();
             buttonFindAllCustomers.PerformClick();
+        }
+
+        private void labelSearchCByPnr_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxSearchType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxSearchCByPnr_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

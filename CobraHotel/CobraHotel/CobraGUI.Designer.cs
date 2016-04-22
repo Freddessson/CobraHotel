@@ -30,6 +30,7 @@ namespace View
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnCreateCustomer = new System.Windows.Forms.Button();
             this.textBoxPnr = new System.Windows.Forms.TextBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
@@ -45,12 +46,13 @@ namespace View
             this.labelCreateCustomerTitle = new System.Windows.Forms.Label();
             this.labelSearchCustomer = new System.Windows.Forms.Label();
             this.textBoxSearchCByPnr = new System.Windows.Forms.TextBox();
-            this.labelSearchCByPnr = new System.Windows.Forms.Label();
             this.buttonFindCustomerByPnr = new System.Windows.Forms.Button();
             this.buttonFindAllCustomers = new System.Windows.Forms.Button();
             this.dataGridViewCustomer = new System.Windows.Forms.DataGridView();
             this.buttonDeleteCustomer = new System.Windows.Forms.Button();
             this.buttonEditCustomer = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.comboBoxSearchType = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -171,7 +173,7 @@ namespace View
             // labelSearchCustomer
             // 
             this.labelSearchCustomer.AutoSize = true;
-            this.labelSearchCustomer.Location = new System.Drawing.Point(579, 262);
+            this.labelSearchCustomer.Location = new System.Drawing.Point(579, 290);
             this.labelSearchCustomer.Name = "labelSearchCustomer";
             this.labelSearchCustomer.Size = new System.Drawing.Size(53, 13);
             this.labelSearchCustomer.TabIndex = 13;
@@ -179,23 +181,15 @@ namespace View
             // 
             // textBoxSearchCByPnr
             // 
-            this.textBoxSearchCByPnr.Location = new System.Drawing.Point(582, 282);
+            this.textBoxSearchCByPnr.Location = new System.Drawing.Point(582, 346);
             this.textBoxSearchCByPnr.Name = "textBoxSearchCByPnr";
             this.textBoxSearchCByPnr.Size = new System.Drawing.Size(100, 20);
             this.textBoxSearchCByPnr.TabIndex = 14;
-            // 
-            // labelSearchCByPnr
-            // 
-            this.labelSearchCByPnr.AutoSize = true;
-            this.labelSearchCByPnr.Location = new System.Drawing.Point(539, 289);
-            this.labelSearchCByPnr.Name = "labelSearchCByPnr";
-            this.labelSearchCByPnr.Size = new System.Drawing.Size(26, 13);
-            this.labelSearchCByPnr.TabIndex = 15;
-            this.labelSearchCByPnr.Text = "Pnr:";
+            this.textBoxSearchCByPnr.TextChanged += new System.EventHandler(this.textBoxSearchCByPnr_TextChanged);
             // 
             // buttonFindCustomerByPnr
             // 
-            this.buttonFindCustomerByPnr.Location = new System.Drawing.Point(582, 308);
+            this.buttonFindCustomerByPnr.Location = new System.Drawing.Point(582, 372);
             this.buttonFindCustomerByPnr.Name = "buttonFindCustomerByPnr";
             this.buttonFindCustomerByPnr.Size = new System.Drawing.Size(75, 23);
             this.buttonFindCustomerByPnr.TabIndex = 16;
@@ -242,17 +236,29 @@ namespace View
             this.buttonEditCustomer.UseVisualStyleBackColor = true;
             this.buttonEditCustomer.Click += new System.EventHandler(this.buttonEditCustomer_Click);
             // 
+            // comboBoxSearchType
+            // 
+            this.comboBoxSearchType.FormattingEnabled = true;
+            this.comboBoxSearchType.Items.AddRange(new object[] {
+            "pnr",
+            "email"});
+            this.comboBoxSearchType.Location = new System.Drawing.Point(582, 319);
+            this.comboBoxSearchType.Name = "comboBoxSearchType";
+            this.comboBoxSearchType.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxSearchType.TabIndex = 23;
+            this.comboBoxSearchType.SelectedIndexChanged += new System.EventHandler(this.comboBoxSearchType_SelectedIndexChanged);
+            // 
             // CobraGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1345, 598);
+            this.Controls.Add(this.comboBoxSearchType);
             this.Controls.Add(this.buttonEditCustomer);
             this.Controls.Add(this.buttonDeleteCustomer);
             this.Controls.Add(this.dataGridViewCustomer);
             this.Controls.Add(this.buttonFindAllCustomers);
             this.Controls.Add(this.buttonFindCustomerByPnr);
-            this.Controls.Add(this.labelSearchCByPnr);
             this.Controls.Add(this.textBoxSearchCByPnr);
             this.Controls.Add(this.labelSearchCustomer);
             this.Controls.Add(this.labelCreateCustomerTitle);
@@ -294,13 +300,14 @@ namespace View
         private System.Windows.Forms.Label labelCreateCustomerTitle;
         private System.Windows.Forms.Label labelSearchCustomer;
         private System.Windows.Forms.TextBox textBoxSearchCByPnr;
-        private System.Windows.Forms.Label labelSearchCByPnr;
         private System.Windows.Forms.Button buttonFindCustomerByPnr;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name2;
         private System.Windows.Forms.Button buttonFindAllCustomers;
         private DataGridView dataGridViewCustomer;
         private Button buttonDeleteCustomer;
         private Button buttonEditCustomer;
+        private ToolTip toolTip1;
+        private ComboBox comboBoxSearchType;
     }
 }
 
