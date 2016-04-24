@@ -20,15 +20,15 @@ namespace Controller
         public Customer FindCustomer(string searchVar, string searchtype)
         {
             //CustomerDAL.FindCustomer(searchVar, searchtype);
-            Customer c = DAL.CustomerDAL.FindCustomer(searchVar, searchtype);
+            Customer c = CustomerDAL.FindCustomer(searchVar, searchtype);
             return c;
         }
 
         public List<Customer> FindAllCustomers()
         {
-            CustomerDAL.FindAllCustomers();
+            //CustomerDAL.FindAllCustomers();
             List<Customer> customerList = new List<Customer>();
-            customerList = DAL.CustomerDAL.FindAllCustomers();
+            customerList = CustomerDAL.FindAllCustomers();
             return customerList;
         }
         public void DeleteCustomer(string pnr)

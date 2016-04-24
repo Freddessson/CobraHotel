@@ -9,7 +9,7 @@ namespace DAL
 {
     public class DBUtil
     {
-        public SqlConnection connection()
+        public SqlConnection Connection()
         {
 
             SqlConnection myConnection = new SqlConnection("user id=admin;" +
@@ -30,7 +30,7 @@ namespace DAL
             return myConnection;
         }
 
-        public void closeConn(SqlConnection myConnection)
+        public void CloseConn(SqlConnection myConnection)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace DAL
 
         }
 
-        internal void closeConn()
+        internal void CloseConn()
         {
             throw new NotImplementedException();
         }

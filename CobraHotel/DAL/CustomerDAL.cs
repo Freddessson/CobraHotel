@@ -16,7 +16,7 @@ namespace DAL
         public static void CreateCustomer(Customer c)
         {
             DBUtil conn = new DBUtil();
-            SqlConnection myConnection = conn.connection();
+            SqlConnection myConnection = conn.Connection();
             string name = c.name;
             string pnr = c.pnr;
             string email = c.email;
@@ -46,7 +46,7 @@ namespace DAL
                 //ERROR
                 Console.Write("Kunde inte skapa kund.");
             }
-            conn.closeConn(myConnection);
+            conn.CloseConn(myConnection);
         }
 
 
@@ -54,7 +54,7 @@ namespace DAL
         public static Customer FindCustomer(string searchVar,string searchtype)
         {
             DBUtil conn = new DBUtil();
-            SqlConnection myConnection = conn.connection();
+            SqlConnection myConnection = conn.Connection();
             try
             {
                 Customer c = new Customer();
@@ -73,8 +73,9 @@ namespace DAL
                 if (searchtype.Equals(emailType))
                 {
                     Console.WriteLine("SÖK PÅ EMAIL FÅN DAL5");
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM customer WHERE email LIKE @email+'%' "+ myConnection);
-                    cmd.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = searchVar;
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM customer WHERE email LIKE 'heh'" + myConnection);
+                    //cmd.Parameters.Add("@email", SqlDbType.Char, 50).Value = 'heh';
+                    
                     myReader = cmd.ExecuteReader();
                     Console.WriteLine("SÖK PÅ EMAIL FÅN DAL6");
                 }
@@ -90,7 +91,7 @@ namespace DAL
                 }
                 return c;
                 //Close connection to DB.
-                conn.closeConn(myConnection);
+                conn.CloseConn(myConnection);
 
             }
 
@@ -104,7 +105,7 @@ namespace DAL
         public static List<Customer> FindAllCustomers()
         {
             DBUtil conn = new DBUtil();
-            SqlConnection myConnection = conn.connection();
+            SqlConnection myConnection = conn.Connection();
             try
             {
 
@@ -143,7 +144,7 @@ namespace DAL
         public static void DeleteCustomer(string pnr)
         {
             DBUtil conn = new DBUtil();
-            SqlConnection myConnection = conn.connection();
+            SqlConnection myConnection = conn.Connection();
 
             string sql = "Delete from customer WHERE pnr = " + pnr;
             SqlCommand cmd = new SqlCommand(sql, myConnection);
@@ -181,7 +182,7 @@ namespace DAL
         public static void UpdateCustomer(Customer c)
         {
             DBUtil conn = new DBUtil();
-            SqlConnection myConnection = conn.connection();
+            SqlConnection myConnection = conn.Connection();
 
             Console.WriteLine(c.pnr);
             Console.WriteLine(c.name);
@@ -219,7 +220,7 @@ namespace DAL
                 //ERROR
                 Console.Write("Kunde inte uppdatera kund.");
             }
-            conn.closeConn(myConnection);
+            conn.CloseConn(myConnection);
         }
     }
 }

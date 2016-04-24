@@ -53,6 +53,7 @@ namespace View
             this.buttonEditCustomer = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.comboBoxSearchType = new System.Windows.Forms.ComboBox();
+            this.buttonAvailableRoomsByPeriod = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -248,11 +249,22 @@ namespace View
             this.comboBoxSearchType.TabIndex = 23;
             this.comboBoxSearchType.SelectedIndexChanged += new System.EventHandler(this.comboBoxSearchType_SelectedIndexChanged);
             // 
+            // buttonAvailableRoomsByPeriod
+            // 
+            this.buttonAvailableRoomsByPeriod.Location = new System.Drawing.Point(220, 429);
+            this.buttonAvailableRoomsByPeriod.Name = "buttonAvailableRoomsByPeriod";
+            this.buttonAvailableRoomsByPeriod.Size = new System.Drawing.Size(75, 23);
+            this.buttonAvailableRoomsByPeriod.TabIndex = 24;
+            this.buttonAvailableRoomsByPeriod.Text = "Lediga rum";
+            this.buttonAvailableRoomsByPeriod.UseVisualStyleBackColor = true;
+            this.buttonAvailableRoomsByPeriod.Click += new System.EventHandler(this.buttonAvailableRoomsByPeriod_Click);
+            // 
             // CobraGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1345, 598);
+            this.Controls.Add(this.buttonAvailableRoomsByPeriod);
             this.Controls.Add(this.comboBoxSearchType);
             this.Controls.Add(this.buttonEditCustomer);
             this.Controls.Add(this.buttonDeleteCustomer);
@@ -308,6 +320,7 @@ namespace View
         private Button buttonEditCustomer;
         private ToolTip toolTip1;
         private ComboBox comboBoxSearchType;
+        private Button buttonAvailableRoomsByPeriod;
     }
 }
 
