@@ -57,18 +57,18 @@ namespace View
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.labelRoomnumber = new System.Windows.Forms.Label();
-            this.labelPrice = new System.Windows.Forms.Label();
-            this.labelBeds = new System.Windows.Forms.Label();
-            this.labelRoomID = new System.Windows.Forms.Label();
-            this.labelPeriod = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.textBoxRoomID = new System.Windows.Forms.TextBox();
-            this.textBoxPrice = new System.Windows.Forms.TextBox();
-            this.textBoxBeds = new System.Windows.Forms.TextBox();
-            this.textBoxRoomnumber = new System.Windows.Forms.TextBox();
-            this.textBoxPeriod = new System.Windows.Forms.TextBox();
             this.btnCreateRoom = new System.Windows.Forms.Button();
+            this.textBoxPeriod = new System.Windows.Forms.TextBox();
+            this.textBoxRoomnumber = new System.Windows.Forms.TextBox();
+            this.textBoxBeds = new System.Windows.Forms.TextBox();
+            this.textBoxPrice = new System.Windows.Forms.TextBox();
+            this.textBoxRoomID = new System.Windows.Forms.TextBox();
+            this.labelPeriod = new System.Windows.Forms.Label();
+            this.labelRoomID = new System.Windows.Forms.Label();
+            this.labelBeds = new System.Windows.Forms.Label();
+            this.labelPrice = new System.Windows.Forms.Label();
+            this.labelRoomnumber = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomer)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -364,32 +364,59 @@ namespace View
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
-            // labelRoomnumber
+            // btnCreateRoom
             // 
-            this.labelRoomnumber.AutoSize = true;
-            this.labelRoomnumber.Location = new System.Drawing.Point(269, 340);
-            this.labelRoomnumber.Name = "labelRoomnumber";
-            this.labelRoomnumber.Size = new System.Drawing.Size(194, 32);
-            this.labelRoomnumber.TabIndex = 0;
-            this.labelRoomnumber.Text = "Roomnumber:";
+            this.btnCreateRoom.Location = new System.Drawing.Point(281, 504);
+            this.btnCreateRoom.Name = "btnCreateRoom";
+            this.btnCreateRoom.Size = new System.Drawing.Size(223, 60);
+            this.btnCreateRoom.TabIndex = 10;
+            this.btnCreateRoom.Text = "Create room";
+            this.btnCreateRoom.UseVisualStyleBackColor = true;
+            this.btnCreateRoom.Click += new System.EventHandler(this.btnCreateRoom_Click);
             // 
-            // labelPrice
+            // textBoxPeriod
             // 
-            this.labelPrice.AutoSize = true;
-            this.labelPrice.Location = new System.Drawing.Point(269, 235);
-            this.labelPrice.Name = "labelPrice";
-            this.labelPrice.Size = new System.Drawing.Size(88, 32);
-            this.labelPrice.TabIndex = 1;
-            this.labelPrice.Text = "Price:";
+            this.textBoxPeriod.Location = new System.Drawing.Point(496, 397);
+            this.textBoxPeriod.Name = "textBoxPeriod";
+            this.textBoxPeriod.Size = new System.Drawing.Size(220, 38);
+            this.textBoxPeriod.TabIndex = 9;
             // 
-            // labelBeds
+            // textBoxRoomnumber
             // 
-            this.labelBeds.AutoSize = true;
-            this.labelBeds.Location = new System.Drawing.Point(269, 289);
-            this.labelBeds.Name = "labelBeds";
-            this.labelBeds.Size = new System.Drawing.Size(88, 32);
-            this.labelBeds.TabIndex = 2;
-            this.labelBeds.Text = "Beds:";
+            this.textBoxRoomnumber.Location = new System.Drawing.Point(496, 340);
+            this.textBoxRoomnumber.Name = "textBoxRoomnumber";
+            this.textBoxRoomnumber.Size = new System.Drawing.Size(220, 38);
+            this.textBoxRoomnumber.TabIndex = 8;
+            // 
+            // textBoxBeds
+            // 
+            this.textBoxBeds.Location = new System.Drawing.Point(496, 283);
+            this.textBoxBeds.Name = "textBoxBeds";
+            this.textBoxBeds.Size = new System.Drawing.Size(220, 38);
+            this.textBoxBeds.TabIndex = 7;
+            // 
+            // textBoxPrice
+            // 
+            this.textBoxPrice.Location = new System.Drawing.Point(496, 235);
+            this.textBoxPrice.Name = "textBoxPrice";
+            this.textBoxPrice.Size = new System.Drawing.Size(220, 38);
+            this.textBoxPrice.TabIndex = 6;
+            // 
+            // textBoxRoomID
+            // 
+            this.textBoxRoomID.Location = new System.Drawing.Point(496, 181);
+            this.textBoxRoomID.Name = "textBoxRoomID";
+            this.textBoxRoomID.Size = new System.Drawing.Size(220, 38);
+            this.textBoxRoomID.TabIndex = 5;
+            // 
+            // labelPeriod
+            // 
+            this.labelPeriod.AutoSize = true;
+            this.labelPeriod.Location = new System.Drawing.Point(269, 397);
+            this.labelPeriod.Name = "labelPeriod";
+            this.labelPeriod.Size = new System.Drawing.Size(106, 32);
+            this.labelPeriod.TabIndex = 4;
+            this.labelPeriod.Text = "Period:";
             // 
             // labelRoomID
             // 
@@ -400,14 +427,32 @@ namespace View
             this.labelRoomID.TabIndex = 3;
             this.labelRoomID.Text = "RoomID:";
             // 
-            // labelPeriod
+            // labelBeds
             // 
-            this.labelPeriod.AutoSize = true;
-            this.labelPeriod.Location = new System.Drawing.Point(269, 397);
-            this.labelPeriod.Name = "labelPeriod";
-            this.labelPeriod.Size = new System.Drawing.Size(106, 32);
-            this.labelPeriod.TabIndex = 4;
-            this.labelPeriod.Text = "Period:";
+            this.labelBeds.AutoSize = true;
+            this.labelBeds.Location = new System.Drawing.Point(269, 289);
+            this.labelBeds.Name = "labelBeds";
+            this.labelBeds.Size = new System.Drawing.Size(88, 32);
+            this.labelBeds.TabIndex = 2;
+            this.labelBeds.Text = "Beds:";
+            // 
+            // labelPrice
+            // 
+            this.labelPrice.AutoSize = true;
+            this.labelPrice.Location = new System.Drawing.Point(269, 235);
+            this.labelPrice.Name = "labelPrice";
+            this.labelPrice.Size = new System.Drawing.Size(88, 32);
+            this.labelPrice.TabIndex = 1;
+            this.labelPrice.Text = "Price:";
+            // 
+            // labelRoomnumber
+            // 
+            this.labelRoomnumber.AutoSize = true;
+            this.labelRoomnumber.Location = new System.Drawing.Point(269, 340);
+            this.labelRoomnumber.Name = "labelRoomnumber";
+            this.labelRoomnumber.Size = new System.Drawing.Size(194, 32);
+            this.labelRoomnumber.TabIndex = 0;
+            this.labelRoomnumber.Text = "Roomnumber:";
             // 
             // tabPage3
             // 
@@ -419,50 +464,6 @@ namespace View
             this.tabPage3.Text = "Booking";
             this.tabPage3.UseVisualStyleBackColor = true;
             this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
-            // 
-            // textBoxRoomID
-            // 
-            this.textBoxRoomID.Location = new System.Drawing.Point(496, 181);
-            this.textBoxRoomID.Name = "textBoxRoomID";
-            this.textBoxRoomID.Size = new System.Drawing.Size(220, 38);
-            this.textBoxRoomID.TabIndex = 5;
-            // 
-            // textBoxPrice
-            // 
-            this.textBoxPrice.Location = new System.Drawing.Point(496, 235);
-            this.textBoxPrice.Name = "textBoxPrice";
-            this.textBoxPrice.Size = new System.Drawing.Size(220, 38);
-            this.textBoxPrice.TabIndex = 6;
-            // 
-            // textBoxBeds
-            // 
-            this.textBoxBeds.Location = new System.Drawing.Point(496, 283);
-            this.textBoxBeds.Name = "textBoxBeds";
-            this.textBoxBeds.Size = new System.Drawing.Size(220, 38);
-            this.textBoxBeds.TabIndex = 7;
-            // 
-            // textBoxRoomnumber
-            // 
-            this.textBoxRoomnumber.Location = new System.Drawing.Point(496, 340);
-            this.textBoxRoomnumber.Name = "textBoxRoomnumber";
-            this.textBoxRoomnumber.Size = new System.Drawing.Size(220, 38);
-            this.textBoxRoomnumber.TabIndex = 8;
-            // 
-            // textBoxPeriod
-            // 
-            this.textBoxPeriod.Location = new System.Drawing.Point(496, 397);
-            this.textBoxPeriod.Name = "textBoxPeriod";
-            this.textBoxPeriod.Size = new System.Drawing.Size(220, 38);
-            this.textBoxPeriod.TabIndex = 9;
-            // 
-            // btnCreateRoom
-            // 
-            this.btnCreateRoom.Location = new System.Drawing.Point(281, 504);
-            this.btnCreateRoom.Name = "btnCreateRoom";
-            this.btnCreateRoom.Size = new System.Drawing.Size(223, 60);
-            this.btnCreateRoom.TabIndex = 10;
-            this.btnCreateRoom.Text = "Create room";
-            this.btnCreateRoom.UseVisualStyleBackColor = true;
             // 
             // CobraGUI
             // 

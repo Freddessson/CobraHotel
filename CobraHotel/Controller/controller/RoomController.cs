@@ -17,7 +17,10 @@ namespace Controller
             return roomList;
         }
 
-
+        public void CreateRoom(Room r)
+        {
+            RoomDAL.CreateRoom(r);
+        }
 
 
         }
