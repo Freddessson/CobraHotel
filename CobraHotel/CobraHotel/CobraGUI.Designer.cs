@@ -287,7 +287,7 @@ namespace View
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(1);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1083, 577);
@@ -317,9 +317,9 @@ namespace View
             this.tabPage1.Controls.Add(this.labelCreateCustomerTitle);
             this.tabPage1.Controls.Add(this.labelAddress);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(1);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(1);
             this.tabPage1.Size = new System.Drawing.Size(1075, 551);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Customer";
@@ -340,9 +340,9 @@ namespace View
             this.tabPage2.Controls.Add(this.labelPrice);
             this.tabPage2.Controls.Add(this.labelRoomnumber);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(1);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(1);
             this.tabPage2.Size = new System.Drawing.Size(1075, 551);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Room";
@@ -352,17 +352,18 @@ namespace View
             // btnCreateRoom
             // 
             this.btnCreateRoom.Location = new System.Drawing.Point(105, 211);
-            this.btnCreateRoom.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnCreateRoom.Margin = new System.Windows.Forms.Padding(1);
             this.btnCreateRoom.Name = "btnCreateRoom";
             this.btnCreateRoom.Size = new System.Drawing.Size(84, 25);
             this.btnCreateRoom.TabIndex = 10;
             this.btnCreateRoom.Text = "Create room";
             this.btnCreateRoom.UseVisualStyleBackColor = true;
+            this.btnCreateRoom.Click += new System.EventHandler(this.btnCreateRoom_Click);
             // 
             // textBoxPeriod
             // 
             this.textBoxPeriod.Location = new System.Drawing.Point(186, 166);
-            this.textBoxPeriod.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBoxPeriod.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxPeriod.Name = "textBoxPeriod";
             this.textBoxPeriod.Size = new System.Drawing.Size(85, 20);
             this.textBoxPeriod.TabIndex = 9;
@@ -370,7 +371,7 @@ namespace View
             // textBoxRoomnumber
             // 
             this.textBoxRoomnumber.Location = new System.Drawing.Point(186, 143);
-            this.textBoxRoomnumber.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBoxRoomnumber.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxRoomnumber.Name = "textBoxRoomnumber";
             this.textBoxRoomnumber.Size = new System.Drawing.Size(85, 20);
             this.textBoxRoomnumber.TabIndex = 8;
@@ -378,7 +379,7 @@ namespace View
             // textBoxBeds
             // 
             this.textBoxBeds.Location = new System.Drawing.Point(186, 119);
-            this.textBoxBeds.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBoxBeds.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxBeds.Name = "textBoxBeds";
             this.textBoxBeds.Size = new System.Drawing.Size(85, 20);
             this.textBoxBeds.TabIndex = 7;
@@ -386,7 +387,7 @@ namespace View
             // textBoxPrice
             // 
             this.textBoxPrice.Location = new System.Drawing.Point(186, 99);
-            this.textBoxPrice.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBoxPrice.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(85, 20);
             this.textBoxPrice.TabIndex = 6;
@@ -394,7 +395,7 @@ namespace View
             // textBoxRoomID
             // 
             this.textBoxRoomID.Location = new System.Drawing.Point(186, 76);
-            this.textBoxRoomID.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBoxRoomID.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxRoomID.Name = "textBoxRoomID";
             this.textBoxRoomID.Size = new System.Drawing.Size(85, 20);
             this.textBoxRoomID.TabIndex = 5;
@@ -455,9 +456,9 @@ namespace View
             // tabPage3
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(1);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(1);
             this.tabPage3.Size = new System.Drawing.Size(1075, 551);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Booking";

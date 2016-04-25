@@ -21,7 +21,5 @@ namespace Controller
         {
             RoomDAL.CreateRoom(r);
         }
-
-
-        }
+    }
 }
