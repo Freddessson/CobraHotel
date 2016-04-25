@@ -17,12 +17,6 @@ namespace DAL
         {
             DBUtil conn = new DBUtil();
             SqlConnection myConnection = conn.Connection();
-            string name = c.name;
-            string pnr = c.pnr;
-            string email = c.email;
-            string phone = c.phone;
-            string address = c.address;
-
             try
             {
                 using (myConnection)
@@ -30,16 +24,14 @@ namespace DAL
 
                     string sql = "INSERT INTO dbo.customer (pnr, name, email, phone, address) VALUES (@pnr, @name, @email, @phone, @address)";
                     SqlCommand cmd = new SqlCommand(sql, myConnection);
-                    cmd.Parameters.Add("@pnr", SqlDbType.VarChar).Value = pnr;
-                    cmd.Parameters.Add("@name", SqlDbType.VarChar, 50).Value = name;
-                    cmd.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = email;
-                    cmd.Parameters.Add("@phone", SqlDbType.VarChar, 50).Value = phone;
-                    cmd.Parameters.Add("@address", SqlDbType.VarChar, 50).Value = address;
+                    cmd.Parameters.Add("@pnr", SqlDbType.VarChar).Value = c.pnr;
+                    cmd.Parameters.Add("@name", SqlDbType.VarChar, 50).Value = c.name;
+                    cmd.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = c.email;
+                    cmd.Parameters.Add("@phone", SqlDbType.VarChar, 50).Value = c.phone;
+                    cmd.Parameters.Add("@address", SqlDbType.VarChar, 50).Value = c.address;
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
                 }
-
-
             }
             catch (SqlException)
             {
