@@ -11,6 +11,42 @@ namespace DAL
 {
     public class RoomDAL
     {
+        public static void CreateRoom(Room r)
+        {
+            DBUtil conn = new DBUtil();
+            SqlConnection myConnection = conn.Connection();
+            string roomId = r.roomId;
+            int price = r.price;
+            string beds = c.email;
+            string phone = c.phone;
+            string address = c.address;
+
+            try
+            {
+                using (myConnection)
+                {
+
+                    string sql = "INSERT INTO dbo.customer (pnr, name, email, phone, address) VALUES (@pnr, @name, @email, @phone, @address)";
+                    SqlCommand cmd = new SqlCommand(sql, myConnection);
+                    cmd.Parameters.Add("@pnr", SqlDbType.VarChar).Value = pnr;
+                    cmd.Parameters.Add("@name", SqlDbType.VarChar, 50).Value = name;
+                    cmd.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = email;
+                    cmd.Parameters.Add("@phone", SqlDbType.VarChar, 50).Value = phone;
+                    cmd.Parameters.Add("@address", SqlDbType.VarChar, 50).Value = address;
+                    cmd.CommandType = CommandType.Text;
+                    cmd.ExecuteNonQuery();
+                }
+
+
+            }
+            catch (SqlException)
+            {
+                //ERROR
+                Console.Write("Kunde inte skapa kund.");
+            }
+            conn.CloseConn(myConnection);
+        }
+
         public static List <Room> GetAvailableRoomsByPeriod(String period)
         {
 
