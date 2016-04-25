@@ -63,6 +63,7 @@ namespace DAL
                 string pnrType = "pnr";
                 string emailType = "email";
                 Console.WriteLine("SÖK PÅ EMAIL FÅN DAL2");
+
                 if (searchtype.Equals(pnrType))
                 {
                     Console.WriteLine("SÖK PÅ EMAIL FÅN DAL3");
@@ -70,13 +71,22 @@ namespace DAL
                     myReader = cmd.ExecuteReader();
                 }
                 Console.WriteLine("SÖK PÅ EMAIL FÅN DAL4");
+
                 if (searchtype.Equals(emailType))
                 {
                     Console.WriteLine("SÖK PÅ EMAIL FÅN DAL5");
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM customer WHERE email LIKE 'heh'" + myConnection);
-                    //cmd.Parameters.Add("@email", SqlDbType.Char, 50).Value = 'heh';
-                    
-                    myReader = cmd.ExecuteReader();
+                    try
+                    {
+                        SqlCommand cmd = new SqlCommand("SELECT * FROM customer WHERE email = @email ", myConnection);
+                        cmd.Parameters.Add("@email", SqlDbType.Char, 50).Value = searchVar;
+
+                        myReader = cmd.ExecuteReader();
+                    }
+                    catch (SqlException e)
+                    {
+
+                        Console.WriteLine(e.Message);
+                    }
                     Console.WriteLine("SÖK PÅ EMAIL FÅN DAL6");
                 }
 
