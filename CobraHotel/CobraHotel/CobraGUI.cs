@@ -234,8 +234,9 @@ namespace View
         private void buttonAvailableRoomsByPeriod_Click(object sender, EventArgs e)
         {
             string period = "";
+            string available = "";
             RoomController RController = new RoomController();
-            RController.GetAvailableRoomsByPeriod(period);
+            RController.GetAvailableRoomsByPeriod(period, available);
         }
     }
 }
