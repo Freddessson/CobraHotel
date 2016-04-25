@@ -10,10 +10,10 @@ namespace Controller
 {
     public class RoomController
     {
-        public List<Room> GetAvailableRoomsByPeriod(String period)
+        public List<Room> GetAvailableRoomsByPeriod(String period, string available)
         {
             List<Room> roomList = new List<Room>();
-            roomList = RoomDAL.GetAvailableRoomsByPeriod(period);
+            roomList = RoomDAL.GetAvailableRoomsByPeriod(period, available);
             return roomList;
         }
 
