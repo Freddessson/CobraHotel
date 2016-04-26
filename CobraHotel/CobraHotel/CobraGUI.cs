@@ -338,6 +338,95 @@ namespace View
             */
 
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            dataGridViewBooking1.DataSource = dt;
+            dataGridViewBooking1.ClearSelection();
+            dt.Columns.Add("Namn");
+            dt.Columns.Add("Pnr");
+            dt.Columns.Add("Email");
+            dt.Columns.Add("Phone");
+            dt.Columns.Add("Address");
+
+
+            CustomerController CController = new CustomerController();
+
+            List<Customer> customerList = new List<Customer>();
+            customerList = CController.FindAllCustomers();
+            //for (int i = 0; i < customerList.Count; i++)
+            foreach (Customer c in customerList)
+            {
+                //dataGridViewCustomer.Rows.Add(c.name, c.pnr, c.email, c.phone, c.address);
+                //dt.Columns.Add(c.name, c.pnr, c.email, c.phone, c.address);
+                DataRow row = dt.NewRow();
+                row["Namn"] = c.name;
+                row["Pnr"] = c.pnr;
+                row["Email"] = c.email;
+                row["Phone"] = c.phone;
+                row["Address"] = c.address;
+                dt.Rows.Add(row);
+            }
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            dataGridViewBooking2.DataSource = dt;
+            dataGridViewBooking2.ClearSelection();
+
+            dt.Columns.Add("Rumsnummer");
+            dt.Columns.Add("Pris");
+            dt.Columns.Add("Antal Sängar");
+            dt.Columns.Add("RumsID");
+            dt.Columns.Add("Ledigt");
+            dt.Columns.Add("Period");
+
+            string period = textBox1period.Text;
+            string available = textBox1Available.Text;
+                
+                RoomController RController = new RoomController();
+
+               RController.GetAvailableRoomsByPeriod(period, available);
+            List<Booking> bookingList = new List<Booking>();
+            //bookingList = RController.FindAllBookings();
+            //for (int i = 0; i < customerList.Count; i++)
+            foreach (Booking b in bookingList)
+            {
+                //dataGridViewCustomer.Rows.Add(c.name, c.pnr, c.email, c.phone, c.address);
+                //dt.Columns.Add(c.name, c.pnr, c.email, c.phone, c.address);
+                DataRow row = dt.NewRow();
+                row["Bokningsnummer"] = b.bookingNbr;
+                row["Pris"] = b.price;
+                row["Period"] = b.period;
+                row["Pnr"] = b.pnr;
+                row["Rumsnummer"] = b.roomNumber;
+                dt.Rows.Add(row);
+            }
+        }
+
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_3(object sender, EventArgs e)
+        {
+
+        }
     }
-    }
+}
+    
 

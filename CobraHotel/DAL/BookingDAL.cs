@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    class BookingDAL
+    public class BookingDAL
     {
         public static void CreateBooking(Booking b, Customer c, Room r)
         {
@@ -35,8 +35,6 @@ namespace DAL
                     cmd.ExecuteNonQuery();
                 }
 
-                
-
             }
             catch (SqlException)
             {
@@ -44,6 +42,45 @@ namespace DAL
                 Console.Write("Kunde inte skapa kund.");
             }
             conn.CloseConn(myConnection);
+        }
+        public static List<Booking> FindAllBookings()
+        {
+            DBUtil conn = new DBUtil();
+            SqlConnection myConnection = conn.Connection();
+            try
+            {
+
+                List<Booking> bookingList = new List<Booking>();
+                SqlDataReader myReader = null;
+                SqlCommand cmd = new SqlCommand("SELECT * FROM booking", myConnection);
+                myReader = cmd.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    Booking b = new Booking();
+                    b.bookingNbr = myReader["bookingNbr"].ToString();
+                    b.price = Convert.ToInt32(myReader["price"]);
+                    b.period = myReader["period"].ToString();
+                    b.pnr = myReader["pnr"].ToString();
+                    b.roomNumber = myReader["roomNumber"].ToString();
+
+
+                    bookingList.Add(b);
+                }
+
+
+
+                return bookingList;
+                //Close connection to DB.
+                //conn.closeConn(myConnection);
+
+            }
+
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            return null;
         }
     }
 }
