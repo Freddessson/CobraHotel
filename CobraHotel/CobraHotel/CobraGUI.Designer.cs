@@ -76,6 +76,7 @@ namespace View
             this.AllaKunder = new System.Windows.Forms.Button();
             this.dataGridViewBooking1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewBooking2 = new System.Windows.Forms.DataGridView();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomer)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -305,6 +306,7 @@ namespace View
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.checkBox1);
             this.tabPage1.Controls.Add(this.labelPnr);
             this.tabPage1.Controls.Add(this.buttonDeleteCustomer);
             this.tabPage1.Controls.Add(this.buttonAvailableRoomsByPeriod);
@@ -545,6 +547,16 @@ namespace View
             this.dataGridViewBooking2.Size = new System.Drawing.Size(472, 288);
             this.dataGridViewBooking2.TabIndex = 0;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(8, 8);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(80, 17);
+            this.checkBox1.TabIndex = 20;
+            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // CobraGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -618,6 +630,7 @@ namespace View
         private Button BokaRum;
         private TextBox textBox1period;
         private TextBox textBox1Available;
+        private CheckBox checkBox1;
     }
 }
 
