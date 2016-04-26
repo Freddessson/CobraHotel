@@ -11,13 +11,14 @@ namespace Model
         public Booking()
         {
         }
-        public Booking(string roomNumber, string pnr, int price, string bookingNbr, string period)
+        public Booking(string roomNumber, string pnr, int price, string bookingNbr, string period, string roomId)
         {
             this.price = price;
             this.bookingNbr = bookingNbr;
             this.period = period;
             this.pnr = pnr;
             this.roomNumber = roomNumber;
+            this.roomId = roomId;
             
             
         }
@@ -27,6 +28,7 @@ namespace Model
         public int price { get; set; }
         public string pnr { get; set; }
         public string roomNumber { get; set; }
+        public string roomId { get; set; }
     }
 }
  

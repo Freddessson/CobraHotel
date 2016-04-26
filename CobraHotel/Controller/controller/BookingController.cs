@@ -17,5 +17,11 @@ namespace Controller
             bookingList = BookingDAL.FindAllBookings();
             return bookingList;
         }
+        public void CreateBooking(Booking b)
+        {
+            BookingDAL.CreateBooking(b);
+        }
+        
     }
+  
 }

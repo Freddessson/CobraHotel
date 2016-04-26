@@ -11,7 +11,7 @@ namespace DAL
 {
     public class BookingDAL
     {
-        public static void CreateBooking(Booking b, Customer c, Room r)
+        public static void CreateBooking(Booking b)
         {
             DBUtil conn = new DBUtil();
             SqlConnection myConnection = conn.Connection();
@@ -19,27 +19,39 @@ namespace DAL
             {
                 using (myConnection)
                 {
-                    b.period = r.period;
-                    b.price = r.price;
-                    b.pnr = c.pnr;
-                    b.roomNumber = r.roomNumber;
-
-                    string sql = "INSERT INTO dbo.booking (roomNumber,pnr,price,bookingNbr,period) VALUES (@roomNumber,@pnr,@price,@bookingNbr,@period)";
+                 
+                    string sql = "INSERT INTO dbo.booking (roomNumber,pnr,price,bookingNbr,period, roomId) VALUES (@roomNumber,@pnr,@price,@bookingNbr,@period, @roomId)";
+                    
                     SqlCommand cmd = new SqlCommand(sql, myConnection);
-                    cmd.Parameters.Add("@roomNumber", SqlDbType.VarChar).Value = b.period;
+                    cmd.Parameters.Add("@roomNumber", SqlDbType.VarChar).Value = b.roomNumber;
                     cmd.Parameters.Add("@pnr", SqlDbType.VarChar, 50).Value = b.pnr;
-                    cmd.Parameters.Add("@price", SqlDbType.VarChar, 50).Value = b.price;
+                    cmd.Parameters.Add("@price", SqlDbType.BigInt, 50).Value = b.price;
                     cmd.Parameters.Add("@bookingNbr", SqlDbType.VarChar, 50).Value = b.bookingNbr;
                     cmd.Parameters.Add("@period", SqlDbType.VarChar, 50).Value = b.period;
+                    cmd.Parameters.Add("@roomId", SqlDbType.VarChar, 50).Value = b.roomId;
+
+
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
+
+                    string sql2 = "UPDATE dbo.room SET available=@available WHERE roomId=@roomId";
+                    SqlCommand cmd2 = new SqlCommand(sql2, myConnection);
+                    cmd2.Parameters.Add("@roomId", SqlDbType.VarChar, 50).Value = b.roomId;
+                    cmd2.Parameters.Add("@available", SqlDbType.VarChar, 50).Value = "n";
+
+                    cmd2.CommandType = CommandType.Text;
+                    cmd2.ExecuteNonQuery();
+
+                    //  string sql2 = "INSERT INTO dbo.room (roomNumber,pnr,price,bookingNbr,period) VALUES (@roomNumber,@pnr,@price,@bookingNbr,@period)";
+                    //SqlCommand cmd2 = new SqlCommand(sql, myConnection);
+                    //cmd....
                 }
 
             }
             catch (SqlException)
             {
                 //ERROR
-                Console.Write("Kunde inte skapa kund.");
+                Console.Write("Kunde inte skapa bokning.");
             }
             conn.CloseConn(myConnection);
         }
@@ -63,6 +75,7 @@ namespace DAL
                     b.period = myReader["period"].ToString();
                     b.pnr = myReader["pnr"].ToString();
                     b.roomNumber = myReader["roomNumber"].ToString();
+                    b.roomId = myReader["roomId"].ToString();
 
 
                     bookingList.Add(b);
@@ -82,5 +95,6 @@ namespace DAL
             }
             return null;
         }
+
     }
 }

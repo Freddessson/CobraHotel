@@ -411,6 +411,7 @@ namespace View
             dt.Columns.Add("Period");
             dt.Columns.Add("Pnr");
             dt.Columns.Add("Rumsnummer");
+            dt.Columns.Add("RumsID");
             
 
            // string period = textBox1period.Text;
@@ -434,13 +435,40 @@ namespace View
                 row["Period"] = b.period;
                 row["Pnr"] = b.pnr;
                 row["Rumsnummer"] = b.roomNumber;
+                row["RumsID"] = b.roomId;
                 dt.Rows.Add(row);
             }
         }
 
 
-        private void button3_Click(object sender, EventArgs e)
+        private void buttonBookRoom_Click(object sender, EventArgs e)
         {
+            Booking b = new Booking();
+            DataGridViewRow row = dataGridViewBooking1.SelectedRows[0];
+            b.pnr = row.Cells["Pnr"].Value.ToString();
+
+            DataGridViewRow row2 = dataGridViewBooking2.SelectedRows[0];
+            b.roomNumber = row2.Cells["Rumsnummer"].Value.ToString();
+            b.period = row2.Cells["Period"].Value.ToString();
+            b.roomId = row2.Cells["RumsID"].Value.ToString();
+            string price = row2.Cells["Pris"].Value.ToString();
+            b.price = Convert.ToInt32(price);
+
+            Random rnd = new Random();
+            int bookingNbr = rnd.Next(100, 10000);
+            b.bookingNbr = bookingNbr.ToString();
+     
+
+           BookingController BController = new BookingController();
+            BController.CreateBooking(b);
+            //dataGridViewCustomer.ClearSelection();
+            //buttonFindAllCustomers.PerformClick();
+
+            /*Room r = new Room();
+            r.available = row.Cells["Period"].Value.ToString();
+
+            RoomController RController = new RoomController();
+            RController.UpdateRoom(r);*/
 
         }
 
@@ -531,7 +559,7 @@ namespace View
             RoomController RController = new RoomController();
 
             List<Room> roomList = new List<Room>();
-            roomList = RController.FindAllRooms();
+            roomList = RController.GetAvailableRooms();
             //for (int i = 0; i < customerList.Count; i++)
             foreach (Room r in roomList)
             {

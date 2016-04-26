@@ -32,5 +32,11 @@ namespace Controller
             roomList = RoomDAL.FindAllRooms();
             return roomList;
         }
+        public List<Room> GetAvailableRooms()
+        {
+            List<Room> roomList = new List<Room>();
+            roomList = RoomDAL.GetAvailableRooms();
+            return roomList;
+        }
     }
 }
