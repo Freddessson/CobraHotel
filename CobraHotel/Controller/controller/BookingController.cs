@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Model;
 using DAL;
 
-namespace Controller.controller
+namespace Controller
 {
-    class BookingController
+    public class BookingController
     {
         public List<Booking> FindAllBookings()
         {

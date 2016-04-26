@@ -72,9 +72,9 @@ namespace View
             this.labelPrice = new System.Windows.Forms.Label();
             this.labelRoomnumber = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.textBox1period = new System.Windows.Forms.TextBox();
+            this.btnAllRooms = new System.Windows.Forms.Button();
             this.BokaRum = new System.Windows.Forms.Button();
-            this.AllaRum = new System.Windows.Forms.Button();
+            this.btnAllBookings = new System.Windows.Forms.Button();
             this.AllaKunder = new System.Windows.Forms.Button();
             this.dataGridViewBooking1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewBooking2 = new System.Windows.Forms.DataGridView();
@@ -300,7 +300,7 @@ namespace View
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(1);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1083, 577);
@@ -330,9 +330,9 @@ namespace View
             this.tabPage1.Controls.Add(this.labelCreateCustomerTitle);
             this.tabPage1.Controls.Add(this.labelAddress);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(1);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(1);
             this.tabPage1.Size = new System.Drawing.Size(1075, 551);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Customer";
@@ -356,9 +356,9 @@ namespace View
             this.tabPage2.Controls.Add(this.labelPrice);
             this.tabPage2.Controls.Add(this.labelRoomnumber);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(1);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(1);
             this.tabPage2.Size = new System.Drawing.Size(1075, 551);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Room";
@@ -368,7 +368,7 @@ namespace View
             // btnUpdateRoom
             // 
             this.btnUpdateRoom.Location = new System.Drawing.Point(486, 296);
-            this.btnUpdateRoom.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnUpdateRoom.Margin = new System.Windows.Forms.Padding(1);
             this.btnUpdateRoom.Name = "btnUpdateRoom";
             this.btnUpdateRoom.Size = new System.Drawing.Size(107, 25);
             this.btnUpdateRoom.TabIndex = 13;
@@ -379,7 +379,7 @@ namespace View
             // buttonFindAllRooms
             // 
             this.buttonFindAllRooms.Location = new System.Drawing.Point(367, 294);
-            this.buttonFindAllRooms.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.buttonFindAllRooms.Margin = new System.Windows.Forms.Padding(1);
             this.buttonFindAllRooms.Name = "buttonFindAllRooms";
             this.buttonFindAllRooms.Size = new System.Drawing.Size(94, 27);
             this.buttonFindAllRooms.TabIndex = 12;
@@ -391,7 +391,7 @@ namespace View
             // 
             this.dataGridViewRoom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewRoom.Location = new System.Drawing.Point(367, 46);
-            this.dataGridViewRoom.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.dataGridViewRoom.Margin = new System.Windows.Forms.Padding(1);
             this.dataGridViewRoom.Name = "dataGridViewRoom";
             this.dataGridViewRoom.RowTemplate.Height = 40;
             this.dataGridViewRoom.Size = new System.Drawing.Size(483, 219);
@@ -401,7 +401,7 @@ namespace View
             // btnCreateRoom
             // 
             this.btnCreateRoom.Location = new System.Drawing.Point(105, 211);
-            this.btnCreateRoom.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnCreateRoom.Margin = new System.Windows.Forms.Padding(1);
             this.btnCreateRoom.Name = "btnCreateRoom";
             this.btnCreateRoom.Size = new System.Drawing.Size(84, 25);
             this.btnCreateRoom.TabIndex = 10;
@@ -412,7 +412,7 @@ namespace View
             // textBoxPeriod
             // 
             this.textBoxPeriod.Location = new System.Drawing.Point(186, 166);
-            this.textBoxPeriod.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBoxPeriod.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxPeriod.Name = "textBoxPeriod";
             this.textBoxPeriod.Size = new System.Drawing.Size(85, 20);
             this.textBoxPeriod.TabIndex = 9;
@@ -420,7 +420,7 @@ namespace View
             // textBoxRoomnumber
             // 
             this.textBoxRoomnumber.Location = new System.Drawing.Point(186, 143);
-            this.textBoxRoomnumber.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBoxRoomnumber.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxRoomnumber.Name = "textBoxRoomnumber";
             this.textBoxRoomnumber.Size = new System.Drawing.Size(85, 20);
             this.textBoxRoomnumber.TabIndex = 8;
@@ -428,7 +428,7 @@ namespace View
             // textBoxBeds
             // 
             this.textBoxBeds.Location = new System.Drawing.Point(186, 119);
-            this.textBoxBeds.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBoxBeds.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxBeds.Name = "textBoxBeds";
             this.textBoxBeds.Size = new System.Drawing.Size(85, 20);
             this.textBoxBeds.TabIndex = 7;
@@ -436,7 +436,7 @@ namespace View
             // textBoxPrice
             // 
             this.textBoxPrice.Location = new System.Drawing.Point(186, 99);
-            this.textBoxPrice.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBoxPrice.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(85, 20);
             this.textBoxPrice.TabIndex = 6;
@@ -444,7 +444,7 @@ namespace View
             // textBoxRoomID
             // 
             this.textBoxRoomID.Location = new System.Drawing.Point(186, 76);
-            this.textBoxRoomID.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBoxRoomID.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxRoomID.Name = "textBoxRoomID";
             this.textBoxRoomID.Size = new System.Drawing.Size(85, 20);
             this.textBoxRoomID.TabIndex = 5;
@@ -504,29 +504,31 @@ namespace View
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.textBox1period);
+            this.tabPage3.Controls.Add(this.btnAllRooms);
             this.tabPage3.Controls.Add(this.BokaRum);
-            this.tabPage3.Controls.Add(this.AllaRum);
+            this.tabPage3.Controls.Add(this.btnAllBookings);
             this.tabPage3.Controls.Add(this.AllaKunder);
             this.tabPage3.Controls.Add(this.dataGridViewBooking1);
             this.tabPage3.Controls.Add(this.dataGridViewBooking2);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(1);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(1);
             this.tabPage3.Size = new System.Drawing.Size(1075, 551);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Booking";
             this.tabPage3.UseVisualStyleBackColor = true;
             this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
-            // textBox1period
+            // btnAllRooms
             // 
-            this.textBox1period.Location = new System.Drawing.Point(509, 326);
-            this.textBox1period.Name = "textBox1period";
-            this.textBox1period.Size = new System.Drawing.Size(78, 20);
-            this.textBox1period.TabIndex = 5;
-            this.textBox1period.TextChanged += new System.EventHandler(this.textBox1_TextChanged_2);
+            this.btnAllRooms.Location = new System.Drawing.Point(509, 326);
+            this.btnAllRooms.Name = "btnAllRooms";
+            this.btnAllRooms.Size = new System.Drawing.Size(75, 23);
+            this.btnAllRooms.TabIndex = 5;
+            this.btnAllRooms.Text = "Alla rum";
+            this.btnAllRooms.UseVisualStyleBackColor = true;
+            this.btnAllRooms.Click += new System.EventHandler(this.button1_Click_2);
             // 
             // BokaRum
             // 
@@ -538,15 +540,15 @@ namespace View
             this.BokaRum.UseVisualStyleBackColor = true;
             this.BokaRum.Click += new System.EventHandler(this.button3_Click);
             // 
-            // AllaRum
+            // btnAllBookings
             // 
-            this.AllaRum.Location = new System.Drawing.Point(593, 326);
-            this.AllaRum.Name = "AllaRum";
-            this.AllaRum.Size = new System.Drawing.Size(75, 23);
-            this.AllaRum.TabIndex = 3;
-            this.AllaRum.Text = "Alla rum";
-            this.AllaRum.UseVisualStyleBackColor = true;
-            this.AllaRum.Click += new System.EventHandler(this.button2_Click);
+            this.btnAllBookings.Location = new System.Drawing.Point(695, 326);
+            this.btnAllBookings.Name = "btnAllBookings";
+            this.btnAllBookings.Size = new System.Drawing.Size(89, 23);
+            this.btnAllBookings.TabIndex = 3;
+            this.btnAllBookings.Text = "Alla bokningar";
+            this.btnAllBookings.UseVisualStyleBackColor = true;
+            this.btnAllBookings.Click += new System.EventHandler(this.btnAllBookings_Click);
             // 
             // AllaKunder
             // 
@@ -574,6 +576,7 @@ namespace View
             this.dataGridViewBooking2.Name = "dataGridViewBooking2";
             this.dataGridViewBooking2.Size = new System.Drawing.Size(472, 288);
             this.dataGridViewBooking2.TabIndex = 0;
+            this.dataGridViewBooking2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBooking2_CellContentClick);
             // 
             // CobraGUI
             // 
@@ -593,7 +596,6 @@ namespace View
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRoom)).EndInit();
             this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBooking1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBooking2)).EndInit();
             this.ResumeLayout(false);
@@ -645,12 +647,12 @@ namespace View
         private Button AllaKunder;
         private DataGridView dataGridViewBooking1;
         private DataGridView dataGridViewBooking2;
-        private Button AllaRum;
+        private Button btnAllBookings;
         private Button BokaRum;
-        private TextBox textBox1period;
         private DataGridView dataGridViewRoom;
         private Button buttonFindAllRooms;
         private Button btnUpdateRoom;
+        private Button btnAllRooms;
     }
 }
 
