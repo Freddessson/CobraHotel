@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Controller;
 using Model;
+using Controller;
 
 namespace View
 {
@@ -272,5 +272,71 @@ namespace View
         {
 
         }
+
+        private void btnCreateRoom_Click(object sender, EventArgs e)
+        {
+            //Create Customer via Controller!
+            Room r = new Room();
+            r.roomId = textBoxRoomID.Text;
+            r.price = Int32.Parse(textBoxPrice.Text); //int
+            r.beds =  Int32.Parse(textBoxBeds.Text);
+            r.roomNumber = textBoxRoomnumber.Text;
+            r.period = textBoxPeriod.Text;
+            Console.WriteLine(r.price);
+
+            RoomController RController = new RoomController();
+
+            RController.CreateRoom(r);
+
+
+          /*  textBoxName.Text = "";
+            textBoxPnr.Text = "";
+            textBoxEmail.Text = "";
+            textBoxPhone.Text = "";
+            textBoxAddress.Text = ""; */
+
+
+            //Console.WriteLine("Du matade in { 0}.",c.pnr);
+
+
+          /*  Customer cCheck = new Customer();
+            //cCheck.pnr = "defaultValue";
+            string searchVar = c.pnr;
+            string searchtype = "pnr";
+            cCheck = CController.FindCustomer(searchVar, searchtype);
+
+            if (cCheck.pnr == c.pnr)
+            {
+                labelMessage.Text = "Personnumret du matade in finns redan.";
+                //CController.CreateCustomer(c);
+                //CController.ShowCustomer(c.pnr);
+            }
+            else
+            {
+                CController.CreateCustomer(c);
+                //CController.FindCustomer(c.pnr);
+                labelMessage.Text = "Kund skapad!";
+                textBoxName.Text = "";
+                textBoxPnr.Text = "";
+                textBoxEmail.Text = "";
+                textBoxPhone.Text = "";
+                textBoxAddress.Text = "";
+                //Console.WriteLine("Du matade in { 0}.",c.pnr);
+            }
+
+            Customer cCheck = new Customer();
+            c.pnr = "35";
+            c = CController.ShowCustomer("000000423456");
+            
+            labelMessage.Text = c.pnr;
+            Console.WriteLine(c.pnr);
+
+            //Console.WriteLine("Pnr:"+cCheck.pnr);
+            //if (kund redan finns med inmatat pnr, ERROR!!
+            //else (tack som fan för att du valde att registrera dig hos CobraHoteL!!!:D
+            */
+
+        }
     }
-}
+    }
+
