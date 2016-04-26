@@ -21,11 +21,12 @@ namespace DAL
                 using (myConnection)
                 {
 
-                    string sql = "INSERT INTO dbo.room (roomId, price, beds, roomNumber, period, available) VALUES (@roomId, @price, @beds, @roomNumber, @period, @available";
+                    string sql = "INSERT INTO dbo.room (roomId, price, beds, roomNumber, period, available) VALUES (@roomId, @price, @beds, @roomNumber, @period, @available)";
+                    
                     SqlCommand cmd = new SqlCommand(sql, myConnection);
                     cmd.Parameters.Add("@roomId", SqlDbType.VarChar).Value = r.roomId;
-                    cmd.Parameters.Add("@price", SqlDbType.VarChar, 50).Value = r.price;
-                    cmd.Parameters.Add("@beds", SqlDbType.VarChar, 50).Value = r.beds;
+                    cmd.Parameters.Add("@price", SqlDbType.BigInt, 50).Value = r.price;
+                    cmd.Parameters.Add("@beds", SqlDbType.BigInt, 50).Value = r.beds;
                     cmd.Parameters.Add("@roomNumber", SqlDbType.VarChar, 50).Value = r.roomNumber;
                     cmd.Parameters.Add("@period", SqlDbType.VarChar, 50).Value = r.period;
                     string available = "y";

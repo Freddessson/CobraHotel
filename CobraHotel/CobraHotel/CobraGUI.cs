@@ -282,6 +282,7 @@ namespace View
             r.beds =  Int32.Parse(textBoxBeds.Text);
             r.roomNumber = textBoxRoomnumber.Text;
             r.period = textBoxPeriod.Text;
+            r.available = "y";
             Console.WriteLine(r.price);
 
             RoomController RController = new RoomController();
