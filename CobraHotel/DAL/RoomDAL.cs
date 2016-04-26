@@ -11,7 +11,7 @@ namespace DAL
 {
     public class RoomDAL
     {
-       public static void CreateRoom(Room r)
+        public static void CreateRoom(Room r)
         {
             DBUtil conn = new DBUtil();
             SqlConnection myConnection = conn.Connection();
@@ -43,7 +43,7 @@ namespace DAL
             }
             conn.CloseConn(myConnection);
         }
-       
+        
         public static List<Room> GetAvailableRoomsByPeriod(String period, string available)
         {
 
