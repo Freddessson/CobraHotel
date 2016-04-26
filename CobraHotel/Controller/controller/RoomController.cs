@@ -20,6 +20,17 @@ namespace Controller
         public void CreateRoom(Room r)
         {
             RoomDAL.CreateRoom(r);
+           
+        }
+        public void UpdateRoom(Room r)
+        {
+            RoomDAL.UpdateRoom(r);
+        }
+        public List<Room> FindAllRooms()
+        {
+            List<Room> roomList = new List<Room>();
+            roomList = RoomDAL.FindAllRooms();
+            return roomList;
         }
     }
 }

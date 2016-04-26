@@ -89,5 +89,84 @@ namespace DAL
             }
             return roomList;
         }
+        public static void UpdateRoom(Room r)
+        {
+            DBUtil conn = new DBUtil();
+            SqlConnection myConnection = conn.Connection();
+
+            try
+            {
+                using (myConnection)
+                {
+
+                    string sql = "UPDATE dbo.room SET price=@price, beds=@beds, period=@period, available=@available, roomNumber=@roomNumber WHERE roomId=@roomId";
+
+                    SqlCommand cmd = new SqlCommand(sql, myConnection);
+                    cmd.Parameters.Add("@price", SqlDbType.VarChar).Value = r.price;
+                    cmd.Parameters.Add("@beds", SqlDbType.VarChar, 50).Value = r.beds;
+                    cmd.Parameters.Add("@period", SqlDbType.VarChar, 50).Value = r.period;
+                    cmd.Parameters.Add("@available", SqlDbType.VarChar, 50).Value = r.available;
+                    cmd.Parameters.Add("@rommNumber", SqlDbType.VarChar, 50).Value = r.roomNumber;
+
+
+
+
+
+                    cmd.CommandType = CommandType.Text;
+                    cmd.ExecuteNonQuery();
+                }
+
+
+            }
+            catch (SqlException)
+            {
+                //ERROR
+                Console.Write("Kunde inte uppdatera rum.");
+            }
+            conn.CloseConn(myConnection);
+        }
+        public static List<Room> FindAllRooms()
+        {
+            DBUtil conn = new DBUtil();
+            SqlConnection myConnection = conn.Connection();
+            try
+            {
+
+                List<Room> roomList = new List<Room>();
+                SqlDataReader myReader = null;
+                SqlCommand cmd = new SqlCommand("SELECT * FROM room", myConnection);
+                myReader = cmd.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    Room r = new Room();
+
+                    //roomId, price, beds, roomNumber, period, available
+
+                    r.roomId = myReader["roomId"].ToString();
+                    r.price = Convert.ToInt32(myReader["price"]);
+                    r.beds = Convert.ToInt32(myReader["beds"]);
+                    r.roomNumber = myReader["roomNumber"].ToString();
+                    r.period = myReader["period"].ToString();
+                    r.available = myReader["available"].ToString();
+
+
+                    roomList.Add(r);
+                }
+
+
+
+                return roomList;
+                //Close connection to DB.
+                //conn.closeConn(myConnection);
+
+            }
+
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            return null;
+        }
     }
 }
