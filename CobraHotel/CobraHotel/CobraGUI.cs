@@ -23,6 +23,14 @@ namespace View
 
             });
             dataGridViewCustomer.MultiSelect = false;
+
+            dataGridViewRoom.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            
+            dataGridViewRoom.SelectionChanged += new EventHandler((s, e) =>
+            {
+
+            });
+            dataGridViewRoom.MultiSelect = false;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -39,7 +47,7 @@ namespace View
             c.email = textBoxEmail.Text;
             c.phone = textBoxPhone.Text;
             c.address = textBoxAddress.Text;
-            
+
             CustomerController CController = new CustomerController();
             //if(c.pnr inte finns i databasen, kör: )
 
@@ -48,12 +56,14 @@ namespace View
             string searchVar = c.pnr;
             string searchtype = "pnr";
             cCheck = CController.FindCustomer(searchVar, searchtype);
-            
-            if (cCheck.pnr == c.pnr){
+
+            if (cCheck.pnr == c.pnr)
+            {
                 labelMessage.Text = "Personnumret du matade in finns redan.";
                 //CController.CreateCustomer(c);
                 //CController.ShowCustomer(c.pnr);
-            }else
+            }
+            else
             {
                 CController.CreateCustomer(c);
                 //CController.FindCustomer(c.pnr);
@@ -122,9 +132,9 @@ namespace View
             string searchVar = textBoxSearchCByPnr.Text;
             string searchtype = comboBoxSearchType.Text;
             c = CController.FindCustomer(searchVar, searchtype);
-            Console.WriteLine("searchType: "+searchtype);
+            Console.WriteLine("searchType: " + searchtype);
             Console.WriteLine("searchVar: " + searchVar);
-            
+
             DataTable dt = new DataTable();
             dataGridViewCustomer.DataSource = dt;
             dataGridViewCustomer.ClearSelection();
@@ -166,12 +176,12 @@ namespace View
 
 
             CustomerController CController = new CustomerController();
-            
+
             List<Customer> customerList = new List<Customer>();
             customerList = CController.FindAllCustomers();
             //for (int i = 0; i < customerList.Count; i++)
             foreach (Customer c in customerList)
-            {                
+            {
                 //dataGridViewCustomer.Rows.Add(c.name, c.pnr, c.email, c.phone, c.address);
                 //dt.Columns.Add(c.name, c.pnr, c.email, c.phone, c.address);
                 DataRow row = dt.NewRow();
@@ -240,7 +250,7 @@ namespace View
 
         private void tabPage1_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void tabPage2_Click(object sender, EventArgs e)
@@ -279,7 +289,7 @@ namespace View
             Room r = new Room();
             r.roomId = textBoxRoomID.Text;
             r.price = Int32.Parse(textBoxPrice.Text); //int
-            r.beds =  Int32.Parse(textBoxBeds.Text);
+            r.beds = Int32.Parse(textBoxBeds.Text);
             r.roomNumber = textBoxRoomnumber.Text;
             r.period = textBoxPeriod.Text;
             r.available = "y";
@@ -290,52 +300,52 @@ namespace View
             RController.CreateRoom(r);
 
 
-          /*  textBoxName.Text = "";
-            textBoxPnr.Text = "";
-            textBoxEmail.Text = "";
-            textBoxPhone.Text = "";
-            textBoxAddress.Text = ""; */
+            /*  textBoxName.Text = "";
+              textBoxPnr.Text = "";
+              textBoxEmail.Text = "";
+              textBoxPhone.Text = "";
+              textBoxAddress.Text = ""; */
 
 
             //Console.WriteLine("Du matade in { 0}.",c.pnr);
 
 
-          /*  Customer cCheck = new Customer();
-            //cCheck.pnr = "defaultValue";
-            string searchVar = c.pnr;
-            string searchtype = "pnr";
-            cCheck = CController.FindCustomer(searchVar, searchtype);
+            /*  Customer cCheck = new Customer();
+              //cCheck.pnr = "defaultValue";
+              string searchVar = c.pnr;
+              string searchtype = "pnr";
+              cCheck = CController.FindCustomer(searchVar, searchtype);
 
-            if (cCheck.pnr == c.pnr)
-            {
-                labelMessage.Text = "Personnumret du matade in finns redan.";
-                //CController.CreateCustomer(c);
-                //CController.ShowCustomer(c.pnr);
-            }
-            else
-            {
-                CController.CreateCustomer(c);
-                //CController.FindCustomer(c.pnr);
-                labelMessage.Text = "Kund skapad!";
-                textBoxName.Text = "";
-                textBoxPnr.Text = "";
-                textBoxEmail.Text = "";
-                textBoxPhone.Text = "";
-                textBoxAddress.Text = "";
-                //Console.WriteLine("Du matade in { 0}.",c.pnr);
-            }
+              if (cCheck.pnr == c.pnr)
+              {
+                  labelMessage.Text = "Personnumret du matade in finns redan.";
+                  //CController.CreateCustomer(c);
+                  //CController.ShowCustomer(c.pnr);
+              }
+              else
+              {
+                  CController.CreateCustomer(c);
+                  //CController.FindCustomer(c.pnr);
+                  labelMessage.Text = "Kund skapad!";
+                  textBoxName.Text = "";
+                  textBoxPnr.Text = "";
+                  textBoxEmail.Text = "";
+                  textBoxPhone.Text = "";
+                  textBoxAddress.Text = "";
+                  //Console.WriteLine("Du matade in { 0}.",c.pnr);
+              }
 
-            Customer cCheck = new Customer();
-            c.pnr = "35";
-            c = CController.ShowCustomer("000000423456");
-            
-            labelMessage.Text = c.pnr;
-            Console.WriteLine(c.pnr);
+              Customer cCheck = new Customer();
+              c.pnr = "35";
+              c = CController.ShowCustomer("000000423456");
 
-            //Console.WriteLine("Pnr:"+cCheck.pnr);
-            //if (kund redan finns med inmatat pnr, ERROR!!
-            //else (tack som fan för att du valde att registrera dig hos CobraHoteL!!!:D
-            */
+              labelMessage.Text = c.pnr;
+              Console.WriteLine(c.pnr);
+
+              //Console.WriteLine("Pnr:"+cCheck.pnr);
+              //if (kund redan finns med inmatat pnr, ERROR!!
+              //else (tack som fan för att du valde att registrera dig hos CobraHoteL!!!:D
+              */
 
         }
 
@@ -390,10 +400,10 @@ namespace View
 
             string period = textBox1period.Text;
             string available = textBox1Available.Text;
-                
-                RoomController RController = new RoomController();
 
-               RController.GetAvailableRoomsByPeriod(period, available);
+            RoomController RController = new RoomController();
+
+            RController.GetAvailableRoomsByPeriod(period, available);
             List<Booking> bookingList = new List<Booking>();
             //bookingList = RController.FindAllBookings();
             //for (int i = 0; i < customerList.Count; i++)
@@ -425,6 +435,67 @@ namespace View
         private void textBox1_TextChanged_3(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridViewRoom_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void buttonFindAllRooms_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            dataGridViewRoom.DataSource = dt;
+            dataGridViewRoom.ClearSelection();
+
+            dt.Columns.Add("Rumsnummer");
+            dt.Columns.Add("Pris");
+            dt.Columns.Add("Antal Sängar");
+            dt.Columns.Add("RumsID");
+            dt.Columns.Add("Ledigt");
+            dt.Columns.Add("Period");
+
+            RoomController RController = new RoomController();
+
+            List<Room> roomList = new List<Room>();
+            roomList = RController.FindAllRooms();
+            //for (int i = 0; i < customerList.Count; i++)
+            foreach (Room r in roomList)
+            {
+                //dataGridViewCustomer.Rows.Add(c.name, c.pnr, c.email, c.phone, c.address);
+                //dt.Columns.Add(c.name, c.pnr, c.email, c.phone, c.address);
+                DataRow row = dt.NewRow();
+                row["Rumsnummer"] = r.roomNumber;
+                row["Pris"] = r.price;
+                row["Antal Sängar"] = r.beds;
+                row["RumsID"] = r.roomId;
+                row["Ledigt"] = r.available;
+                row["Period"] = r.period;
+                dt.Rows.Add(row);
+
+            }
+        }
+
+        private void btnUpdateRoom_Click(object sender, EventArgs e)
+        {
+            Room r = new Room();
+            DataGridViewRow row = dataGridViewRoom.SelectedRows[0];
+            
+            r.roomNumber = row.Cells["Rumsnummer"].Value.ToString();
+            string price = row.Cells["Pris"].Value.ToString();
+            r.price = Convert.ToInt32(price);
+            Console.WriteLine("PRIS"+r.price);
+            //r.price = Int32.Parse(row.Cells["Pris"]);
+            string beds = row.Cells["Antal Sängar"].Value.ToString();
+            r.beds = Convert.ToInt32(beds);
+            r.roomId = row.Cells["RumsID"].Value.ToString();
+            r.available = row.Cells["Ledigt"].Value.ToString();
+            r.period = row.Cells["Period"].Value.ToString();
+
+            RoomController RController = new RoomController();
+            RController.UpdateRoom(r);
+            dataGridViewRoom.ClearSelection();
+            buttonFindAllRooms.PerformClick();
         }
     }
 }
