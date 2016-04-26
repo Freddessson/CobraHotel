@@ -100,17 +100,20 @@ namespace DAL
                 {
 
                     string sql = "UPDATE dbo.room SET price=@price, beds=@beds, period=@period, available=@available, roomNumber=@roomNumber WHERE roomId=@roomId";
-
+                    //string sql = "UPDATE dbo.customer SET name=@name, email=@email, phone=@phone, address=@address WHERE pnr=@pnr";
                     SqlCommand cmd = new SqlCommand(sql, myConnection);
-                    cmd.Parameters.Add("@price", SqlDbType.VarChar).Value = r.price;
-                    cmd.Parameters.Add("@beds", SqlDbType.VarChar, 50).Value = r.beds;
+                    cmd.Parameters.Add("@price", SqlDbType.BigInt).Value = r.price;
+                    Console.WriteLine("PRIS: "+r.price);
+                    Console.WriteLine("PRIS: " + r.beds);
+                    Console.WriteLine("PRIS: " + r.period);
+                    Console.WriteLine("PRIS: " + r.available);
+                    Console.WriteLine("PRIS: " + r.roomNumber);
+                    Console.WriteLine("PRIS: " + r.roomId);
+                    cmd.Parameters.Add("@beds", SqlDbType.BigInt, 50).Value = r.beds;
                     cmd.Parameters.Add("@period", SqlDbType.VarChar, 50).Value = r.period;
                     cmd.Parameters.Add("@available", SqlDbType.VarChar, 50).Value = r.available;
-                    cmd.Parameters.Add("@rommNumber", SqlDbType.VarChar, 50).Value = r.roomNumber;
-
-
-
-
+                    cmd.Parameters.Add("@roomNumber", SqlDbType.VarChar, 50).Value = r.roomNumber;
+                    cmd.Parameters.Add("@roomId", SqlDbType.VarChar, 50).Value = r.roomId;
 
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
