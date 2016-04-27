@@ -399,7 +399,7 @@ namespace View
             dt.Columns.Add("Period");
 
             string period = textBox1period.Text;
-            string available = textBox1Available.Text;
+            string available = "y";
 
             RoomController RController = new RoomController();
 
