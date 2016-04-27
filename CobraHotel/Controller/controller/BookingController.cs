@@ -22,6 +22,13 @@ namespace Controller
             BookingDAL.CreateBooking(b);
         }
         
+        public void DeleteBooking(Booking b)
+        {
+            BookingDAL.DeleteBooking(b);
+        }
+
+
     }
+
   
 }

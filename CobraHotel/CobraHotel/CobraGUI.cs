@@ -25,7 +25,7 @@ namespace View
             dataGridViewCustomer.MultiSelect = false;
 
             dataGridViewRoom.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            
+
             dataGridViewRoom.SelectionChanged += new EventHandler((s, e) =>
             {
 
@@ -55,53 +55,74 @@ namespace View
 
         private void btnCreateCustomer_Click(object sender, EventArgs e)
         {
-            //Create Customer via Controller!
-            Customer c = new Customer();
-            c.name = textBoxName.Text;
-            c.pnr = textBoxPnr.Text;
-            c.email = textBoxEmail.Text;
-            c.phone = textBoxPhone.Text;
-            c.address = textBoxAddress.Text;
-
-            CustomerController CController = new CustomerController();
-            //if(c.pnr inte finns i databasen, kör: )
-
-            Customer cCheck = new Customer();
-            //cCheck.pnr = "defaultValue";
-            string searchVar = c.pnr;
-            string searchtype = "pnr";
-            cCheck = CController.FindCustomer(searchVar, searchtype);
-
-            if (cCheck.pnr == c.pnr)
+            if (String.IsNullOrEmpty(textBoxPnr.Text) 
+                || String.IsNullOrEmpty(textBoxName.Text)
+                || String.IsNullOrEmpty(textBoxEmail.Text)
+                || String.IsNullOrEmpty(textBoxPhone.Text)
+                || String.IsNullOrEmpty(textBoxAddress.Text))
             {
-                labelMessage.Text = "Personnumret du matade in finns redan.";
-                //CController.CreateCustomer(c);
-                //CController.ShowCustomer(c.pnr);
+                labelMessage.Text = "Vänligen fyll i alla fält.";
             }
             else
             {
-                CController.CreateCustomer(c);
-                //CController.FindCustomer(c.pnr);
-                labelMessage.Text = "Kund skapad!";
-                textBoxName.Text = "";
-                textBoxPnr.Text = "";
-                textBoxEmail.Text = "";
-                textBoxPhone.Text = "";
-                textBoxAddress.Text = "";
-                //Console.WriteLine("Du matade in { 0}.",c.pnr);
+
+                //Create Customer via Controller!
+                Customer c = new Customer();
+                c.name = textBoxName.Text;
+                c.pnr = textBoxPnr.Text;
+                c.email = textBoxEmail.Text;
+                c.phone = textBoxPhone.Text;
+                c.address = textBoxAddress.Text;
+
+                CustomerController CController = new CustomerController();
+                //if(c.pnr inte finns i databasen, kör: )
+
+                Customer cCheck = new Customer();
+                //cCheck.pnr = "defaultValue";
+                string searchVar = c.pnr;
+                string searchtype = "pnr";
+                cCheck = CController.FindCustomer(searchVar, searchtype);
+
+
+                if (cCheck.pnr == c.pnr)
+                {
+                    labelMessage.Text = "Personnumret du matade in finns redan.";
+                    //CController.CreateCustomer(c);
+                    //CController.ShowCustomer(c.pnr);
+                }
+                else
+                {
+                    CController.CreateCustomer(c);
+                    //CController.FindCustomer(c.pnr);
+                    labelMessage.Text = "Kund skapad!";
+                    textBoxName.Text = "";
+                    textBoxPnr.Text = "";
+                    textBoxEmail.Text = "";
+                    textBoxPhone.Text = "";
+                    textBoxAddress.Text = "";
+
+                    dataGridViewCustomer.ClearSelection();
+                    buttonFindAllCustomers.PerformClick();
+
+                    //Console.WriteLine("Du matade in { 0}.",c.pnr);
+                }
+
+                /*Customer cCheck = new Customer();
+                c.pnr = "35";
+                c = CController.ShowCustomer("000000423456");
+
+                labelMessage.Text = c.pnr;
+                Console.WriteLine(c.pnr);*/
+
+                //Console.WriteLine("Pnr:"+cCheck.pnr);
+                //if (kund redan finns med inmatat pnr, ERROR!!
+                //else (tack som fan för att du valde att registrera dig hos CobraHoteL!!!:D
+
             }
-
-            /*Customer cCheck = new Customer();
-            c.pnr = "35";
-            c = CController.ShowCustomer("000000423456");
-            
-            labelMessage.Text = c.pnr;
-            Console.WriteLine(c.pnr);*/
-
-            //Console.WriteLine("Pnr:"+cCheck.pnr);
-            //if (kund redan finns med inmatat pnr, ERROR!!
-            //else (tack som fan för att du valde att registrera dig hos CobraHoteL!!!:D
-
+                        
+          
+           
+          
 
         }
 
@@ -142,30 +163,41 @@ namespace View
 
         private void buttonFindCustomerByPnr_Click(object sender, EventArgs e)
         {
-            CustomerController CController = new CustomerController();
-            Customer c = new Customer();
-            string searchVar = textBoxSearchCByPnr.Text;
-            string searchtype = comboBoxSearchType.Text;
-            c = CController.FindCustomer(searchVar, searchtype);
-            Console.WriteLine("searchType: " + searchtype);
-            Console.WriteLine("searchVar: " + searchVar);
+            if (String.IsNullOrEmpty(textBoxSearchCByPnr.Text))
+            {
+                labelMessage.Text = "Vänligen fyll i fältet.";
+            }
+            else
+            {
+                CustomerController CController = new CustomerController();
+                Customer c = new Customer();
+                string searchVar = textBoxSearchCByPnr.Text;
+                string searchtype = comboBoxSearchType.Text;
+                c = CController.FindCustomer(searchVar, searchtype);
+                Console.WriteLine("searchType: " + searchtype);
+                Console.WriteLine("searchVar: " + searchVar);
 
-            DataTable dt = new DataTable();
-            dataGridViewCustomer.DataSource = dt;
-            dataGridViewCustomer.ClearSelection();
-            dt.Columns.Add("Namn");
-            dt.Columns.Add("Pnr");
-            dt.Columns.Add("Email");
-            dt.Columns.Add("Phone");
-            dt.Columns.Add("Address");
+                DataTable dt = new DataTable();
+                dataGridViewCustomer.DataSource = dt;
+                dataGridViewCustomer.ClearSelection();
+                dt.Columns.Add("Namn");
+                dt.Columns.Add("Pnr");
+                dt.Columns.Add("Email");
+                dt.Columns.Add("Telefon");
+                dt.Columns.Add("Adress");
 
-            DataRow row = dt.NewRow();
-            row["Namn"] = c.name;
-            row["Pnr"] = c.pnr;
-            row["Email"] = c.email;
-            row["Phone"] = c.phone;
-            row["Address"] = c.address;
-            dt.Rows.Add(row);
+                DataRow row = dt.NewRow();
+                row["Namn"] = c.name;
+                row["Pnr"] = c.pnr;
+                row["Email"] = c.email;
+                row["Telefon"] = c.phone;
+                row["Adress"] = c.address;
+                dt.Rows.Add(row);
+
+            }
+
+
+            
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -186,8 +218,8 @@ namespace View
             dt.Columns.Add("Namn");
             dt.Columns.Add("Pnr");
             dt.Columns.Add("Email");
-            dt.Columns.Add("Phone");
-            dt.Columns.Add("Address");
+            dt.Columns.Add("Telefon");
+            dt.Columns.Add("Adress");
 
 
             CustomerController CController = new CustomerController();
@@ -203,8 +235,8 @@ namespace View
                 row["Namn"] = c.name;
                 row["Pnr"] = c.pnr;
                 row["Email"] = c.email;
-                row["Phone"] = c.phone;
-                row["Address"] = c.address;
+                row["Telefon"] = c.phone;
+                row["Adress"] = c.address;
                 dt.Rows.Add(row);
             }
         }
@@ -231,8 +263,8 @@ namespace View
             c.pnr = row.Cells["Pnr"].Value.ToString();
             c.name = row.Cells["Namn"].Value.ToString();
             c.email = row.Cells["Email"].Value.ToString();
-            c.phone = row.Cells["Phone"].Value.ToString();
-            c.address = row.Cells["Address"].Value.ToString();
+            c.phone = row.Cells["Telefon"].Value.ToString();
+            c.address = row.Cells["Adress"].Value.ToString();
 
             CustomerController CController = new CustomerController();
             CController.UpdateCustomer(c);
@@ -255,14 +287,14 @@ namespace View
 
         }
 
-        private void buttonAvailableRoomsByPeriod_Click(object sender, EventArgs e)
+       /* private void buttonAvailableRoomsByPeriod_Click(object sender, EventArgs e)
         {
             string period = "";
             string available = "";
             RoomController RController = new RoomController();
             RController.GetAvailableRoomsByPeriod(period, available);
         }
-
+        */
         private void tabPage1_Click(object sender, EventArgs e)
         {
 
@@ -313,6 +345,16 @@ namespace View
             RoomController RController = new RoomController();
 
             RController.CreateRoom(r);
+
+            textBoxRoomID.Text = "";
+            textBoxPrice.Text = "";
+            textBoxBeds.Text = "";
+            textBoxRoomnumber.Text = "";
+            textBoxPeriod.Text = "";
+
+            dataGridViewRoom.ClearSelection();
+            buttonFindAllRooms.PerformClick();
+            
 
 
             /*  textBoxName.Text = "";
@@ -372,8 +414,8 @@ namespace View
             dt.Columns.Add("Namn");
             dt.Columns.Add("Pnr");
             dt.Columns.Add("Email");
-            dt.Columns.Add("Phone");
-            dt.Columns.Add("Address");
+            dt.Columns.Add("Telefon");
+            dt.Columns.Add("Adress");
 
 
             CustomerController CController = new CustomerController();
@@ -389,8 +431,8 @@ namespace View
                 row["Namn"] = c.name;
                 row["Pnr"] = c.pnr;
                 row["Email"] = c.email;
-                row["Phone"] = c.phone;
-                row["Address"] = c.address;
+                row["Telefon"] = c.phone;
+                row["Adress"] = c.address;
                 dt.Rows.Add(row);
             }
         }
@@ -461,6 +503,9 @@ namespace View
 
            BookingController BController = new BookingController();
             BController.CreateBooking(b);
+
+            dataGridViewBooking2.ClearSelection();
+            btnAllRooms.PerformClick();
             //dataGridViewCustomer.ClearSelection();
             //buttonFindAllCustomers.PerformClick();
 
@@ -493,10 +538,10 @@ namespace View
             dataGridViewRoom.DataSource = dt;
             dataGridViewRoom.ClearSelection();
 
+            dt.Columns.Add("RumsID");
             dt.Columns.Add("Rumsnummer");
             dt.Columns.Add("Pris");
-            dt.Columns.Add("Antal Sängar");
-            dt.Columns.Add("RumsID");
+            dt.Columns.Add("Antal Sängar");            
             dt.Columns.Add("Ledigt");
             dt.Columns.Add("Period");
 
@@ -510,10 +555,10 @@ namespace View
                 //dataGridViewCustomer.Rows.Add(c.name, c.pnr, c.email, c.phone, c.address);
                 //dt.Columns.Add(c.name, c.pnr, c.email, c.phone, c.address);
                 DataRow row = dt.NewRow();
+                row["RumsID"] = r.roomId;
                 row["Rumsnummer"] = r.roomNumber;
                 row["Pris"] = r.price;
                 row["Antal Sängar"] = r.beds;
-                row["RumsID"] = r.roomId;
                 row["Ledigt"] = r.available;
                 row["Period"] = r.period;
                 dt.Rows.Add(row);
@@ -541,6 +586,8 @@ namespace View
             RController.UpdateRoom(r);
             dataGridViewRoom.ClearSelection();
             buttonFindAllRooms.PerformClick();
+
+
         }
 
         private void button1_Click_2(object sender, EventArgs e)
@@ -549,10 +596,10 @@ namespace View
             dataGridViewBooking2.DataSource = dt;
             dataGridViewBooking2.ClearSelection();
 
+            dt.Columns.Add("RumsID");
             dt.Columns.Add("Rumsnummer");
             dt.Columns.Add("Pris");
-            dt.Columns.Add("Antal Sängar");
-            dt.Columns.Add("RumsID");
+            dt.Columns.Add("Antal Sängar");            
             dt.Columns.Add("Ledigt");
             dt.Columns.Add("Period");
 
@@ -579,6 +626,22 @@ namespace View
 
         private void dataGridViewBooking2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+        }
+
+        private void btnDeleteBooking_Click(object sender, EventArgs e)
+        {
+            Booking b = new Booking();
+
+            DataGridViewRow row = dataGridViewBooking2.SelectedRows[0];
+            b.roomId = row.Cells["RumsID"].Value.ToString();
+            b.bookingNbr = row.Cells["Bokningsnummer"].Value.ToString();
+            BookingController BController = new BookingController();
+            BController.DeleteBooking(b);
+
+
+            dataGridViewBooking2.ClearSelection();
+            btnAllBookings.PerformClick();
 
         }
     }

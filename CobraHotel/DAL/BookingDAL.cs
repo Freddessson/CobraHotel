@@ -96,5 +96,38 @@ namespace DAL
             return null;
         }
 
+        public static void DeleteBooking(Booking b)
+        {
+            DBUtil conn = new DBUtil();
+            SqlConnection myConnection = conn.Connection();
+
+            try
+            {
+                using (myConnection)
+                {
+                    string sql = "Delete from booking WHERE roomId = " + b.roomId;
+                    SqlCommand cmd = new SqlCommand(sql, myConnection);
+
+                    cmd.CommandType = CommandType.Text;
+                    cmd.ExecuteNonQuery();
+                    //conn.closeConn();
+
+                    string sql2 = "UPDATE dbo.room SET available=@available WHERE roomId=@roomId";
+                    SqlCommand cmd2 = new SqlCommand(sql2, myConnection);
+                    cmd2.Parameters.Add("@roomId", SqlDbType.VarChar, 50).Value = b.roomId;
+                    cmd2.Parameters.Add("@available", SqlDbType.VarChar, 50).Value = "y";
+
+                    cmd2.CommandType = CommandType.Text;
+                    cmd2.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException)
+            {
+                //ERROR
+                Console.Write("Kunde inte ta bort bokning.");
+            }
+            conn.CloseConn(myConnection);
+        }
+
     }
 }
