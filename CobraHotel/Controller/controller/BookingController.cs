@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Model;
 using DAL;
 
-namespace Controller.controller
+namespace Controller
 {
-    class BookingController
+    public class BookingController
     {
         public List<Booking> FindAllBookings()
         {
@@ -17,5 +17,11 @@ namespace Controller.controller
             bookingList = BookingDAL.FindAllBookings();
             return bookingList;
         }
+        public void CreateBooking(Booking b)
+        {
+            BookingDAL.CreateBooking(b);
+        }
+        
     }
+  
 }
