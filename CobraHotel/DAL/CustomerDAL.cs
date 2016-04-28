@@ -92,8 +92,6 @@ namespace DAL
                     c.address = myReader["address"].ToString();
                 }
                 return c;
-                //Close connection to DB.
-                conn.CloseConn(myConnection);
 
             }
 
@@ -102,8 +100,9 @@ namespace DAL
                 Console.WriteLine(e.ToString());
             }
             return null;
-
+            conn.CloseConn(myConnection);
         }
+
         public static List<Customer> FindAllCustomers()
         {
             DBUtil conn = new DBUtil();
@@ -132,8 +131,6 @@ namespace DAL
 
 
                 return customerList;
-                //Close connection to DB.
-                //conn.closeConn(myConnection);
 
             }
 
@@ -161,35 +158,9 @@ namespace DAL
             {
                 Console.WriteLine("Kunde inte ta bort kund");
             }
-           // conn.CloseConn();
+
         }
-            /*public static void UpdateCustomer(Customer c)
-            {
-                DBUtil conn = new DBUtil();
-                SqlConnection myConnection = conn.connection();
-                try
-                {
-                    string sql = "UPDATE dbo.customer SET name = andratVärde"
-                        //(pnr, name, email, phone, address) VALUES (@pnr, @name, @email, @phone, @address)"
-                            + "WHERE pnr = " + c.pnr;
-                    //INFO SET id='" + txtId.Text + "', name='" + txtName.Text + "' where id='" + listBox1.SelectedItem.ToString() + "' and name= '" + listBox2.SelectedItem.ToString() + "'";
-                    SqlCommand cmd = new SqlCommand(sql, myConnection);
 
-                    cmd.Parameters.Add("@pnr", SqlDbType.VarChar).Value = c.pnr;
-                    cmd.Parameters.Add("@name", SqlDbType.VarChar, 50).Value = c.name;
-                    cmd.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = c.email;
-                    cmd.Parameters.Add("@phone", SqlDbType.VarChar, 50).Value = c.phone;
-                    cmd.Parameters.Add("@address", SqlDbType.VarChar, 50).Value = c.address;
-                    cmd.CommandType = CommandType.Text;
-
-                    cmd.ExecuteNonQuery();
-                }
-                catch (SqlException)
-                {
-                    Console.WriteLine("Can't update customer. SQL Exception");
-
-                }
-            }*/
 
         public static void UpdateCustomer(Customer c)
         {
@@ -205,21 +176,13 @@ namespace DAL
             {
                 using (myConnection)
                 {
-                    //string sql = "UPDATE customer SET name = hejsan WHERE pnr = 1";
                     string sql = "UPDATE dbo.customer SET name=@name, email=@email, phone=@phone, address=@address WHERE pnr=@pnr";
-                    //string sql = "INSERT INTO dbo.customer (pnr, name, email, phone, address) VALUES (@pnr, @name, @email, @phone, @address)";
-                    //string sql = "UPDATE dbo.customer (pnr, name, email, phone, address) VALUES (@pnr, @name, @email, @phone, @address" +
-                    //"WHERE pnr = )"+c.pnr;
                     SqlCommand cmd = new SqlCommand(sql, myConnection);
                     cmd.Parameters.Add("@pnr", SqlDbType.VarChar).Value = c.pnr;
                     cmd.Parameters.Add("@name", SqlDbType.VarChar, 50).Value = c.name;
                     cmd.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = c.email;
                     cmd.Parameters.Add("@phone", SqlDbType.VarChar, 50).Value = c.phone;
                     cmd.Parameters.Add("@address", SqlDbType.VarChar, 50).Value = c.address;
-
-
-                    
-
 
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();

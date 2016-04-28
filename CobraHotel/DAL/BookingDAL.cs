@@ -42,9 +42,6 @@ namespace DAL
                     cmd2.CommandType = CommandType.Text;
                     cmd2.ExecuteNonQuery();
 
-                    //  string sql2 = "INSERT INTO dbo.room (roomNumber,pnr,price,bookingNbr,period) VALUES (@roomNumber,@pnr,@price,@bookingNbr,@period)";
-                    //SqlCommand cmd2 = new SqlCommand(sql, myConnection);
-                    //cmd....
                 }
 
             }
@@ -80,13 +77,7 @@ namespace DAL
 
                     bookingList.Add(b);
                 }
-
-
-
                 return bookingList;
-                //Close connection to DB.
-                //conn.closeConn(myConnection);
-
             }
 
             catch (Exception e)
@@ -110,7 +101,6 @@ namespace DAL
 
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
-                    //conn.closeConn();
 
                     string sql2 = "UPDATE dbo.room SET available=@available WHERE roomId=@roomId";
                     SqlCommand cmd2 = new SqlCommand(sql2, myConnection);

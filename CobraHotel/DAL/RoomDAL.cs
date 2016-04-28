@@ -57,9 +57,7 @@ namespace DAL
             {
                 SqlDataReader myReader = null;
                 SqlCommand cmd = new SqlCommand("SELECT * FROM room WHERE available = @available ", myConnection);
-                //period = "y";
                 available = "y";
-                //cmd.Parameters.Add("@period", SqlDbType.VarChar, 50).Value = period;
                 cmd.Parameters.Add("@available", SqlDbType.VarChar, 50).Value = available;
                 myReader = cmd.ExecuteReader();
 
@@ -102,9 +100,7 @@ namespace DAL
             {
                 SqlDataReader myReader = null;
                 SqlCommand cmd = new SqlCommand("SELECT * FROM room WHERE available = @available ", myConnection);
-                //period = "y";
                 string available = "y";
-                //cmd.Parameters.Add("@period", SqlDbType.VarChar, 50).Value = period;
                 cmd.Parameters.Add("@available", SqlDbType.VarChar, 50).Value = available;
                 myReader = cmd.ExecuteReader();
 
@@ -147,7 +143,6 @@ namespace DAL
                 {
 
                     string sql = "UPDATE dbo.room SET price=@price, beds=@beds, period=@period, available=@available, roomNumber=@roomNumber WHERE roomId=@roomId";
-                    //string sql = "UPDATE dbo.customer SET name=@name, email=@email, phone=@phone, address=@address WHERE pnr=@pnr";
                     SqlCommand cmd = new SqlCommand(sql, myConnection);
                     cmd.Parameters.Add("@price", SqlDbType.BigInt).Value = r.price;
                     cmd.Parameters.Add("@beds", SqlDbType.BigInt, 50).Value = r.beds;
@@ -185,8 +180,6 @@ namespace DAL
                 {
                     Room r = new Room();
 
-                    //roomId, price, beds, roomNumber, period, available
-
                     r.roomId = myReader["roomId"].ToString();
                     r.price = Convert.ToInt32(myReader["price"]);
                     r.beds = Convert.ToInt32(myReader["beds"]);
@@ -201,8 +194,6 @@ namespace DAL
 
 
                 return roomList;
-                //Close connection to DB.
-                //conn.closeConn(myConnection);
 
             }
 

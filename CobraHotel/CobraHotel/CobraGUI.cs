@@ -267,10 +267,11 @@ namespace View
             if (dataGridViewCustomer.RowCount > 0)
             {
                 DataGridViewRow row = dataGridViewCustomer.SelectedRows[0];
-                if(pnr != null)
+                pnr = row.Cells["Pnr"].Value.ToString();
+                if (pnr != null)
                 {
 
-                    pnr = row.Cells["Pnr"].Value.ToString();
+                    
                     CustomerController CController = new CustomerController();
                     CController.DeleteCustomer(pnr);
                     dataGridViewCustomer.ClearSelection();
@@ -297,14 +298,16 @@ namespace View
             {
                 DataGridViewRow row = dataGridViewCustomer.SelectedRows[0];
 
+                c.pnr = row.Cells["Pnr"].Value.ToString();
+                c.name = row.Cells["Namn"].Value.ToString();
+                c.email = row.Cells["Email"].Value.ToString();
+                c.phone = row.Cells["Telefon"].Value.ToString();
+                c.address = row.Cells["Adress"].Value.ToString();
+
                 if (c.pnr != null)
                 {
 
-                    c.pnr = row.Cells["Pnr"].Value.ToString();
-                    c.name = row.Cells["Namn"].Value.ToString();
-                    c.email = row.Cells["Email"].Value.ToString();
-                    c.phone = row.Cells["Telefon"].Value.ToString();
-                    c.address = row.Cells["Adress"].Value.ToString();
+                    
 
                     CustomerController CController = new CustomerController();
                     CController.UpdateCustomer(c);
@@ -529,22 +532,21 @@ namespace View
             {
                 DataGridViewRow row = dataGridViewBooking1.SelectedRows[0];
                 DataGridViewRow row2 = dataGridViewBooking2.SelectedRows[0];
+
+                b.pnr = row.Cells["Pnr"].Value.ToString();
+                b.roomNumber = row2.Cells["Rumsnummer"].Value.ToString();
+                b.period = row2.Cells["Period"].Value.ToString();
+                b.roomId = row2.Cells["RumsID"].Value.ToString();
+                string price = row2.Cells["Pris"].Value.ToString();
+                b.price = Convert.ToInt32(price);
+
+                Random rnd = new Random();
+                int bookingNbr = rnd.Next(100, 10000);
+                b.bookingNbr = bookingNbr.ToString();
+
                 if (b.pnr != null && b.roomId != null )
                 {
-                    b.pnr = row.Cells["Pnr"].Value.ToString();
-
-
-                    b.roomNumber = row2.Cells["Rumsnummer"].Value.ToString();
-                    b.period = row2.Cells["Period"].Value.ToString();
-                    b.roomId = row2.Cells["RumsID"].Value.ToString();
-                    string price = row2.Cells["Pris"].Value.ToString();
-                    b.price = Convert.ToInt32(price);
-
-                    Random rnd = new Random();
-                    int bookingNbr = rnd.Next(100, 10000);
-                    b.bookingNbr = bookingNbr.ToString();
-
-
+                   
                     BookingController BController = new BookingController();
                     BController.CreateBooking(b);
 
@@ -631,18 +633,20 @@ namespace View
             {
                 DataGridViewRow row = dataGridViewRoom.SelectedRows[0];
 
-                if(r.roomId != null)
+                r.roomNumber = row.Cells["Rumsnummer"].Value.ToString();
+                string price = row.Cells["Pris"].Value.ToString();
+                r.price = Convert.ToInt32(price);
+                Console.WriteLine("PRIS" + r.price);
+                //r.price = Int32.Parse(row.Cells["Pris"]);
+                string beds = row.Cells["Antal Sängar"].Value.ToString();
+                r.beds = Convert.ToInt32(beds);
+                r.roomId = row.Cells["RumsID"].Value.ToString();
+                r.available = row.Cells["Ledigt"].Value.ToString();
+                r.period = row.Cells["Period"].Value.ToString();
+
+                if (r.roomId != null)
                 {
-                    r.roomNumber = row.Cells["Rumsnummer"].Value.ToString();
-                    string price = row.Cells["Pris"].Value.ToString();
-                    r.price = Convert.ToInt32(price);
-                    Console.WriteLine("PRIS" + r.price);
-                    //r.price = Int32.Parse(row.Cells["Pris"]);
-                    string beds = row.Cells["Antal Sängar"].Value.ToString();
-                    r.beds = Convert.ToInt32(beds);
-                    r.roomId = row.Cells["RumsID"].Value.ToString();
-                    r.available = row.Cells["Ledigt"].Value.ToString();
-                    r.period = row.Cells["Period"].Value.ToString();
+                    
 
                     RoomController RController = new RoomController();
                     RController.UpdateRoom(r);
@@ -712,14 +716,15 @@ namespace View
             if (dataGridViewBooking2.RowCount > 0)
             {
                 DataGridViewRow row = dataGridViewBooking2.SelectedRows[0];
+
+                b.roomId = row.Cells["RumsID"].Value.ToString();
+                b.bookingNbr = row.Cells["Bokningsnummer"].Value.ToString();
+
                 if (b.roomId != null)
                 {
-                    b.roomId = row.Cells["RumsID"].Value.ToString();
-                    b.bookingNbr = row.Cells["Bokningsnummer"].Value.ToString();
+                    
                     BookingController BController = new BookingController();
-                    BController.DeleteBooking(b);
-
-
+                    BController.DeleteBooking(b);             
                     dataGridViewBooking2.ClearSelection();
                     btnAllBookings.PerformClick();
 

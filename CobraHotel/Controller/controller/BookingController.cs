@@ -12,7 +12,6 @@ namespace Controller
     {
         public List<Booking> FindAllBookings()
         {
-            //CustomerDAL.FindAllCustomers();
             List<Booking> bookingList = new List<Booking>();
             bookingList = BookingDAL.FindAllBookings();
             return bookingList;
