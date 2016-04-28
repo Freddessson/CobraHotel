@@ -490,6 +490,7 @@ namespace View
 
                     dataGridViewBooking2.ClearSelection();
                     btnAllRooms.PerformClick();
+
                 }
                 else
                 {
