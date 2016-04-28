@@ -84,6 +84,21 @@ namespace View
                 cCheck = CController.FindCustomer(searchVar, searchtype);
 
 
+                int parsedValue;
+                if (!int.TryParse(textBoxPnr.Text, out parsedValue))
+                {
+                    labelMessage.Text = "Pnr måste vara siffor";
+                    return;
+                }
+
+                if (!int.TryParse(textBoxPhone.Text, out parsedValue))
+                {
+                    labelMessage.Text = "Telefonnummer måste vara siffor";
+                    return;
+                }
+
+
+
                 if (cCheck.pnr == c.pnr)
                 {
                     labelMessage.Text = "Personnumret du matade in finns redan.";
@@ -163,7 +178,7 @@ namespace View
 
         private void buttonFindCustomerByPnr_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(textBoxSearchCByPnr.Text))
+            if (String.IsNullOrEmpty(textBoxSearchCByPnr.Text) || String.IsNullOrEmpty(comboBoxSearchType.Text))
             {
                 labelMessage.Text = "Vänligen fyll i fältet.";
             }
@@ -248,28 +263,70 @@ namespace View
 
         private void buttonDeleteCustomer_Click(object sender, EventArgs e)
         {
-            DataGridViewRow row = dataGridViewCustomer.SelectedRows[0];
-            string pnr = row.Cells["Pnr"].Value.ToString();
-            CustomerController CController = new CustomerController();
-            CController.DeleteCustomer(pnr);
-            dataGridViewCustomer.ClearSelection();
-            buttonFindAllCustomers.PerformClick();
+            string pnr = null;
+            if (dataGridViewCustomer.RowCount > 0)
+            {
+                DataGridViewRow row = dataGridViewCustomer.SelectedRows[0];
+                if(pnr != null)
+                {
+
+                    pnr = row.Cells["Pnr"].Value.ToString();
+                    CustomerController CController = new CustomerController();
+                    CController.DeleteCustomer(pnr);
+                    dataGridViewCustomer.ClearSelection();
+                    buttonFindAllCustomers.PerformClick();
+                }
+                else
+                {
+                    Console.WriteLine("Delete1");
+                }
+                
+            }
+            else
+            {
+                Console.WriteLine("Delete2");
+            }
+            
         }
 
         private void buttonEditCustomer_Click(object sender, EventArgs e)
         {
             Customer c = new Customer();
-            DataGridViewRow row = dataGridViewCustomer.SelectedRows[0];
-            c.pnr = row.Cells["Pnr"].Value.ToString();
-            c.name = row.Cells["Namn"].Value.ToString();
-            c.email = row.Cells["Email"].Value.ToString();
-            c.phone = row.Cells["Telefon"].Value.ToString();
-            c.address = row.Cells["Adress"].Value.ToString();
 
-            CustomerController CController = new CustomerController();
-            CController.UpdateCustomer(c);
-            dataGridViewCustomer.ClearSelection();
-            buttonFindAllCustomers.PerformClick();
+            if (dataGridViewCustomer.RowCount > 0)
+            {
+                DataGridViewRow row = dataGridViewCustomer.SelectedRows[0];
+
+                if (c.pnr != null)
+                {
+
+                    c.pnr = row.Cells["Pnr"].Value.ToString();
+                    c.name = row.Cells["Namn"].Value.ToString();
+                    c.email = row.Cells["Email"].Value.ToString();
+                    c.phone = row.Cells["Telefon"].Value.ToString();
+                    c.address = row.Cells["Adress"].Value.ToString();
+
+                    CustomerController CController = new CustomerController();
+                    CController.UpdateCustomer(c);
+                    dataGridViewCustomer.ClearSelection();
+                    buttonFindAllCustomers.PerformClick();
+
+                }
+                else
+                {
+                    Console.WriteLine("Edit1");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Edit2");
+            }
+
+
+            
+
+            
+           
         }
 
         private void labelSearchCByPnr_Click(object sender, EventArgs e)
@@ -332,77 +389,59 @@ namespace View
 
         private void btnCreateRoom_Click(object sender, EventArgs e)
         {
-            //Create Customer via Controller!
-            Room r = new Room();
-            r.roomId = textBoxRoomID.Text;
-            r.price = Int32.Parse(textBoxPrice.Text); //int
-            r.beds = Int32.Parse(textBoxBeds.Text);
-            r.roomNumber = textBoxRoomnumber.Text;
-            r.period = textBoxPeriod.Text;
-            r.available = "y";
-            Console.WriteLine(r.price);
+            if (String.IsNullOrEmpty(textBoxRoomID.Text)
+                || String.IsNullOrEmpty(textBoxPrice.Text)
+                || String.IsNullOrEmpty(textBoxBeds.Text)
+                || String.IsNullOrEmpty(textBoxRoomnumber.Text)
+                || String.IsNullOrEmpty(textBoxPeriod.Text))
+            {
+                Console.WriteLine("Skapa Rum1");
+            }
+            else
+            {
+                int parsedValue;
+                if (!int.TryParse(textBoxPrice.Text, out parsedValue))
+                {
+                    labelRoom.Text = "Pris måste vara siffor";
+                    return;
+                }
 
-            RoomController RController = new RoomController();
+                if (!int.TryParse(textBoxBeds.Text, out parsedValue))
+                {
+                    labelRoom.Text = "Antal sängar måste vara siffor";
+                    return;
+                }
 
-            RController.CreateRoom(r);
+                Room r = new Room();
+                r.roomId = textBoxRoomID.Text;
+                r.price = Int32.Parse(textBoxPrice.Text); //int
+                r.beds = Int32.Parse(textBoxBeds.Text);
+                r.roomNumber = textBoxRoomnumber.Text;
+                r.period = textBoxPeriod.Text;
+                r.available = "y";
+                Console.WriteLine(r.price);
 
-            textBoxRoomID.Text = "";
-            textBoxPrice.Text = "";
-            textBoxBeds.Text = "";
-            textBoxRoomnumber.Text = "";
-            textBoxPeriod.Text = "";
+                RoomController RController = new RoomController();
 
-            dataGridViewRoom.ClearSelection();
-            buttonFindAllRooms.PerformClick();
-            
+                RController.CreateRoom(r);
 
+                textBoxRoomID.Text = "";
+                textBoxPrice.Text = "";
+                textBoxBeds.Text = "";
+                textBoxRoomnumber.Text = "";
+                textBoxPeriod.Text = "";
 
-            /*  textBoxName.Text = "";
-              textBoxPnr.Text = "";
-              textBoxEmail.Text = "";
-              textBoxPhone.Text = "";
-              textBoxAddress.Text = ""; */
+                dataGridViewRoom.ClearSelection();
+                buttonFindAllRooms.PerformClick();
 
 
-            //Console.WriteLine("Du matade in { 0}.",c.pnr);
 
 
-            /*  Customer cCheck = new Customer();
-              //cCheck.pnr = "defaultValue";
-              string searchVar = c.pnr;
-              string searchtype = "pnr";
-              cCheck = CController.FindCustomer(searchVar, searchtype);
+            }
 
-              if (cCheck.pnr == c.pnr)
-              {
-                  labelMessage.Text = "Personnumret du matade in finns redan.";
-                  //CController.CreateCustomer(c);
-                  //CController.ShowCustomer(c.pnr);
-              }
-              else
-              {
-                  CController.CreateCustomer(c);
-                  //CController.FindCustomer(c.pnr);
-                  labelMessage.Text = "Kund skapad!";
-                  textBoxName.Text = "";
-                  textBoxPnr.Text = "";
-                  textBoxEmail.Text = "";
-                  textBoxPhone.Text = "";
-                  textBoxAddress.Text = "";
-                  //Console.WriteLine("Du matade in { 0}.",c.pnr);
-              }
 
-              Customer cCheck = new Customer();
-              c.pnr = "35";
-              c = CController.ShowCustomer("000000423456");
 
-              labelMessage.Text = c.pnr;
-              Console.WriteLine(c.pnr);
 
-              //Console.WriteLine("Pnr:"+cCheck.pnr);
-              //if (kund redan finns med inmatat pnr, ERROR!!
-              //else (tack som fan för att du valde att registrera dig hos CobraHoteL!!!:D
-              */
 
         }
 
@@ -486,26 +525,45 @@ namespace View
         private void buttonBookRoom_Click(object sender, EventArgs e)
         {
             Booking b = new Booking();
-            DataGridViewRow row = dataGridViewBooking1.SelectedRows[0];
-            b.pnr = row.Cells["Pnr"].Value.ToString();
+            if(dataGridViewBooking2.RowCount > 0 && dataGridViewBooking1.RowCount >0)
+            {
+                DataGridViewRow row = dataGridViewBooking1.SelectedRows[0];
+                DataGridViewRow row2 = dataGridViewBooking2.SelectedRows[0];
+                if (b.pnr != null && b.roomId != null )
+                {
+                    b.pnr = row.Cells["Pnr"].Value.ToString();
 
-            DataGridViewRow row2 = dataGridViewBooking2.SelectedRows[0];
-            b.roomNumber = row2.Cells["Rumsnummer"].Value.ToString();
-            b.period = row2.Cells["Period"].Value.ToString();
-            b.roomId = row2.Cells["RumsID"].Value.ToString();
-            string price = row2.Cells["Pris"].Value.ToString();
-            b.price = Convert.ToInt32(price);
 
-            Random rnd = new Random();
-            int bookingNbr = rnd.Next(100, 10000);
-            b.bookingNbr = bookingNbr.ToString();
-     
+                    b.roomNumber = row2.Cells["Rumsnummer"].Value.ToString();
+                    b.period = row2.Cells["Period"].Value.ToString();
+                    b.roomId = row2.Cells["RumsID"].Value.ToString();
+                    string price = row2.Cells["Pris"].Value.ToString();
+                    b.price = Convert.ToInt32(price);
 
-           BookingController BController = new BookingController();
-            BController.CreateBooking(b);
+                    Random rnd = new Random();
+                    int bookingNbr = rnd.Next(100, 10000);
+                    b.bookingNbr = bookingNbr.ToString();
 
-            dataGridViewBooking2.ClearSelection();
-            btnAllRooms.PerformClick();
+
+                    BookingController BController = new BookingController();
+                    BController.CreateBooking(b);
+
+                    dataGridViewBooking2.ClearSelection();
+                    btnAllRooms.PerformClick();
+                }
+                else
+                {
+                    Console.WriteLine("Boka rum1");
+                }
+               
+
+            }
+            else
+            {
+                Console.WriteLine("Boka rum 2");
+            }
+
+           
             //dataGridViewCustomer.ClearSelection();
             //buttonFindAllCustomers.PerformClick();
 
@@ -569,23 +627,41 @@ namespace View
         private void btnUpdateRoom_Click(object sender, EventArgs e)
         {
             Room r = new Room();
-            DataGridViewRow row = dataGridViewRoom.SelectedRows[0];
-            
-            r.roomNumber = row.Cells["Rumsnummer"].Value.ToString();
-            string price = row.Cells["Pris"].Value.ToString();
-            r.price = Convert.ToInt32(price);
-            Console.WriteLine("PRIS"+r.price);
-            //r.price = Int32.Parse(row.Cells["Pris"]);
-            string beds = row.Cells["Antal Sängar"].Value.ToString();
-            r.beds = Convert.ToInt32(beds);
-            r.roomId = row.Cells["RumsID"].Value.ToString();
-            r.available = row.Cells["Ledigt"].Value.ToString();
-            r.period = row.Cells["Period"].Value.ToString();
+            if(dataGridViewRoom.RowCount > 0)
+            {
+                DataGridViewRow row = dataGridViewRoom.SelectedRows[0];
 
-            RoomController RController = new RoomController();
-            RController.UpdateRoom(r);
-            dataGridViewRoom.ClearSelection();
-            buttonFindAllRooms.PerformClick();
+                if(r.roomId != null)
+                {
+                    r.roomNumber = row.Cells["Rumsnummer"].Value.ToString();
+                    string price = row.Cells["Pris"].Value.ToString();
+                    r.price = Convert.ToInt32(price);
+                    Console.WriteLine("PRIS" + r.price);
+                    //r.price = Int32.Parse(row.Cells["Pris"]);
+                    string beds = row.Cells["Antal Sängar"].Value.ToString();
+                    r.beds = Convert.ToInt32(beds);
+                    r.roomId = row.Cells["RumsID"].Value.ToString();
+                    r.available = row.Cells["Ledigt"].Value.ToString();
+                    r.period = row.Cells["Period"].Value.ToString();
+
+                    RoomController RController = new RoomController();
+                    RController.UpdateRoom(r);
+                    dataGridViewRoom.ClearSelection();
+                    buttonFindAllRooms.PerformClick();
+
+                }
+                else
+                {
+                    Console.WriteLine("Uppdatera rum1");
+                }
+
+
+
+            }
+            else
+            {
+                Console.WriteLine("Uppdatera rum2");
+            }
 
 
         }
@@ -633,15 +709,33 @@ namespace View
         {
             Booking b = new Booking();
 
-            DataGridViewRow row = dataGridViewBooking2.SelectedRows[0];
-            b.roomId = row.Cells["RumsID"].Value.ToString();
-            b.bookingNbr = row.Cells["Bokningsnummer"].Value.ToString();
-            BookingController BController = new BookingController();
-            BController.DeleteBooking(b);
+            if (dataGridViewBooking2.RowCount > 0)
+            {
+                DataGridViewRow row = dataGridViewBooking2.SelectedRows[0];
+                if (b.roomId != null)
+                {
+                    b.roomId = row.Cells["RumsID"].Value.ToString();
+                    b.bookingNbr = row.Cells["Bokningsnummer"].Value.ToString();
+                    BookingController BController = new BookingController();
+                    BController.DeleteBooking(b);
 
 
-            dataGridViewBooking2.ClearSelection();
-            btnAllBookings.PerformClick();
+                    dataGridViewBooking2.ClearSelection();
+                    btnAllBookings.PerformClick();
+
+                }
+                else
+                {
+                    Console.WriteLine("Ta bort bokning1");
+                }
+
+
+            }
+            else
+            {
+                Console.WriteLine("Ta bort bokning2");
+            }
+
 
         }
     }

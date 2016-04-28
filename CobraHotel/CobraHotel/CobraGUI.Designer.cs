@@ -71,13 +71,14 @@ namespace View
             this.labelPrice = new System.Windows.Forms.Label();
             this.labelRoomnumber = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnDeleteBooking = new System.Windows.Forms.Button();
             this.btnAllRooms = new System.Windows.Forms.Button();
             this.BokaRum = new System.Windows.Forms.Button();
             this.btnAllBookings = new System.Windows.Forms.Button();
             this.AllaKunder = new System.Windows.Forms.Button();
             this.dataGridViewBooking1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewBooking2 = new System.Windows.Forms.DataGridView();
-            this.btnDeleteBooking = new System.Windows.Forms.Button();
+            this.labelRoom = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomer)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -311,11 +312,11 @@ namespace View
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Location = new System.Drawing.Point(-1, 11);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(2888, 1376);
+            this.tabControl1.Size = new System.Drawing.Size(2669, 1044);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -353,6 +354,7 @@ namespace View
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.labelRoom);
             this.tabPage2.Controls.Add(this.btnUpdateRoom);
             this.tabPage2.Controls.Add(this.buttonFindAllRooms);
             this.tabPage2.Controls.Add(this.dataGridViewRoom);
@@ -524,11 +526,21 @@ namespace View
             this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage3.Size = new System.Drawing.Size(2868, 1318);
+            this.tabPage3.Size = new System.Drawing.Size(2649, 986);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Bokning";
             this.tabPage3.UseVisualStyleBackColor = true;
             this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
+            // 
+            // btnDeleteBooking
+            // 
+            this.btnDeleteBooking.Location = new System.Drawing.Point(1871, 777);
+            this.btnDeleteBooking.Name = "btnDeleteBooking";
+            this.btnDeleteBooking.Size = new System.Drawing.Size(246, 55);
+            this.btnDeleteBooking.TabIndex = 6;
+            this.btnDeleteBooking.Text = "Ta bort bokning";
+            this.btnDeleteBooking.UseVisualStyleBackColor = true;
+            this.btnDeleteBooking.Click += new System.EventHandler(this.btnDeleteBooking_Click);
             // 
             // btnAllRooms
             // 
@@ -596,25 +608,23 @@ namespace View
             this.dataGridViewBooking2.TabIndex = 0;
             this.dataGridViewBooking2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBooking2_CellContentClick);
             // 
-            // btnDeleteBooking
+            // labelRoom
             // 
-            this.btnDeleteBooking.Location = new System.Drawing.Point(1871, 777);
-            this.btnDeleteBooking.Name = "btnDeleteBooking";
-            this.btnDeleteBooking.Size = new System.Drawing.Size(246, 55);
-            this.btnDeleteBooking.TabIndex = 6;
-            this.btnDeleteBooking.Text = "Ta bort bokning";
-            this.btnDeleteBooking.UseVisualStyleBackColor = true;
-            this.btnDeleteBooking.Click += new System.EventHandler(this.btnDeleteBooking_Click);
+            this.labelRoom.AutoSize = true;
+            this.labelRoom.Location = new System.Drawing.Point(238, 504);
+            this.labelRoom.Name = "labelRoom";
+            this.labelRoom.Size = new System.Drawing.Size(0, 32);
+            this.labelRoom.TabIndex = 19;
             // 
             // CobraGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2880, 1054);
+            this.ClientSize = new System.Drawing.Size(2679, 1071);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Name = "CobraGUI";
-            this.Text = "Form1";
+            this.Text = "CobraGUI";
             this.Load += new System.EventHandler(this.CobraGUI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomer)).EndInit();
             this.tabControl1.ResumeLayout(false);
@@ -680,6 +690,7 @@ namespace View
         private Button btnUpdateRoom;
         private Button btnAllRooms;
         private Button btnDeleteBooking;
+        private Label labelRoom;
     }
 }
 
