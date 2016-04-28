@@ -77,7 +77,6 @@ namespace DAL
                 }
                 foreach (Room r in roomList)
                 {
-                    Console.WriteLine("Available: " + r.available);
                 }
             }
             catch (SqlException e)
@@ -120,7 +119,6 @@ namespace DAL
                 }
                 foreach (Room r in roomList)
                 {
-                    Console.WriteLine("Available: " + r.available);
                 }
             }
             catch (SqlException e)

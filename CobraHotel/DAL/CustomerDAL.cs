@@ -50,23 +50,18 @@ namespace DAL
             try
             {
                 Customer c = new Customer();
-                Console.WriteLine("SÖK PÅ EMAIL FÅN DAL1");
                 SqlDataReader myReader = null;
                 string pnrType = "pnr";
                 string emailType = "email";
-                Console.WriteLine("SÖK PÅ EMAIL FÅN DAL2");
 
                 if (searchtype.Equals(pnrType))
                 {
-                    Console.WriteLine("SÖK PÅ EMAIL FÅN DAL3");
                     SqlCommand cmd = new SqlCommand("SELECT * FROM customer WHERE pnr = " + searchVar, myConnection);
                     myReader = cmd.ExecuteReader();
                 }
-                Console.WriteLine("SÖK PÅ EMAIL FÅN DAL4");
 
                 if (searchtype.Equals(emailType))
                 {
-                    Console.WriteLine("SÖK PÅ EMAIL FÅN DAL5");
                     try
                     {
                         SqlCommand cmd = new SqlCommand("SELECT * FROM customer WHERE email = @email ", myConnection);
@@ -79,12 +74,10 @@ namespace DAL
 
                         Console.WriteLine(e.Message);
                     }
-                    Console.WriteLine("SÖK PÅ EMAIL FÅN DAL6");
                 }
 
                 while (myReader.Read())
                 {
-                    Console.WriteLine("FR^ÅN DAL: "+c.phone);
                     c.pnr = myReader["pnr"].ToString();
                     c.name = myReader["name"].ToString();
                     c.email = myReader["email"].ToString();
@@ -167,11 +160,6 @@ namespace DAL
             DBUtil conn = new DBUtil();
             SqlConnection myConnection = conn.Connection();
 
-            Console.WriteLine(c.pnr);
-            Console.WriteLine(c.name);
-            Console.WriteLine(c.email);
-            Console.WriteLine(c.address);
-            Console.WriteLine(c.phone);
             try
             {
                 using (myConnection)
