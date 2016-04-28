@@ -148,38 +148,48 @@ namespace DAL
             DBUtil conn = new DBUtil();
             SqlConnection myConnection = conn.Connection();
 
-            string sql = "Delete from customer WHERE pnr = " + pnr;
-            SqlCommand cmd = new SqlCommand(sql, myConnection);
-            cmd.ExecuteNonQuery();
-            //conn.closeConn();
-        }
-        /*public static void UpdateCustomer(Customer c)
-        {
-            DBUtil conn = new DBUtil();
-            SqlConnection myConnection = conn.connection();
             try
             {
-                string sql = "UPDATE dbo.customer SET name = andratVärde"
-                    //(pnr, name, email, phone, address) VALUES (@pnr, @name, @email, @phone, @address)"
-                        + "WHERE pnr = " + c.pnr;
-                //INFO SET id='" + txtId.Text + "', name='" + txtName.Text + "' where id='" + listBox1.SelectedItem.ToString() + "' and name= '" + listBox2.SelectedItem.ToString() + "'";
-                SqlCommand cmd = new SqlCommand(sql, myConnection);
-
-                cmd.Parameters.Add("@pnr", SqlDbType.VarChar).Value = c.pnr;
-                cmd.Parameters.Add("@name", SqlDbType.VarChar, 50).Value = c.name;
-                cmd.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = c.email;
-                cmd.Parameters.Add("@phone", SqlDbType.VarChar, 50).Value = c.phone;
-                cmd.Parameters.Add("@address", SqlDbType.VarChar, 50).Value = c.address;
-                cmd.CommandType = CommandType.Text;
-
-                cmd.ExecuteNonQuery();
+                using (myConnection)
+                {
+                    string sql = "Delete from customer WHERE pnr = " + pnr;
+                    SqlCommand cmd = new SqlCommand(sql, myConnection);
+                    cmd.ExecuteNonQuery();
+                }
             }
             catch (SqlException)
             {
-                Console.WriteLine("Can't update customer. SQL Exception");
-                
+                Console.WriteLine("Kunde inte ta bort kund");
             }
-        }*/
+           // conn.CloseConn();
+        }
+            /*public static void UpdateCustomer(Customer c)
+            {
+                DBUtil conn = new DBUtil();
+                SqlConnection myConnection = conn.connection();
+                try
+                {
+                    string sql = "UPDATE dbo.customer SET name = andratVärde"
+                        //(pnr, name, email, phone, address) VALUES (@pnr, @name, @email, @phone, @address)"
+                            + "WHERE pnr = " + c.pnr;
+                    //INFO SET id='" + txtId.Text + "', name='" + txtName.Text + "' where id='" + listBox1.SelectedItem.ToString() + "' and name= '" + listBox2.SelectedItem.ToString() + "'";
+                    SqlCommand cmd = new SqlCommand(sql, myConnection);
+
+                    cmd.Parameters.Add("@pnr", SqlDbType.VarChar).Value = c.pnr;
+                    cmd.Parameters.Add("@name", SqlDbType.VarChar, 50).Value = c.name;
+                    cmd.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = c.email;
+                    cmd.Parameters.Add("@phone", SqlDbType.VarChar, 50).Value = c.phone;
+                    cmd.Parameters.Add("@address", SqlDbType.VarChar, 50).Value = c.address;
+                    cmd.CommandType = CommandType.Text;
+
+                    cmd.ExecuteNonQuery();
+                }
+                catch (SqlException)
+                {
+                    Console.WriteLine("Can't update customer. SQL Exception");
+
+                }
+            }*/
 
         public static void UpdateCustomer(Customer c)
         {
